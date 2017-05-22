@@ -1,0 +1,26 @@
+
+Spring Intro
+---------------
+	The Spring Framework is an application framework and inversion of control container for the Java platform. 
+	The framework's core features can be used by any Java application, but there are extensions for building web applications on top of the Java EE platform.
+	
+	Unline principles of Spring: RTP - Runtime polymorphism & HAS-A relationship
+		- using these 2 principles complete spring has been implemented
+		Developers need to follow HAS-A relationship over inheritence. Using runtime polymorphism we can pass required dependencies into POJOs
+		
+	IOC - Inversion of Control :: Loose Coupling b/w classes ::
+	DI 	- Dependancy injection :: How a class gets hold of its dependencies. Constructor DI (for required dependencies) or Setter DI(for optional dependencies) ::
+	AOP - Aspect oriented programming :: takes care of cross cutting concerns such as logging, security, declarative txn etc ::
+	
+	IOC - HAS-A relationship inputs are declared in <bean>.xml file and injected by IOC container to POJO classes. Use runtime polymorphism
+			Made possible bcz of containers
+	
+	IOC Containers:
+		- Core container
+		- J2EE container
+		
+	Spring MVC prepared on top of IOC container also has web container
+	AOP- Aspects 
+	
+	
+	
