@@ -1,0 +1,24 @@
+Java
+		New features in Java 8
+		Multi-Threading in Java 
+			+ yield, join, sleep
+			- Synchronization
+				+ Class Level Synchronization 
+				+ Object level Synchronization
+				- Block Level Synchronization
+			-Inter-thred Communication
+				+ wait(), notify(), notifyAll()
+			- Executor framework
+			- Barrier Synchronization, countdown latch, cyclic barrier
+		+ File Handling in Java - Done
+			+ Serialization in Java - Doing
+			+ Externalization
+		+ Internationalization + Localization 
+		Logging in Java
+		Collections & Data structures in Java
+		Design patterns
+		Security features in java 8
+			- oAuth
+			- Diff bw HTTP & HTTPS
+				- How to implement HTTPS
+		JDBC
