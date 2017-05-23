@@ -42,7 +42,7 @@ How to start container OR create objects in Spring ?
 
 Recommended IDEs for Spring Applications
 ----------------------------------------
-	1. Eclipse (while creating xml files we need to add xsd/dtd from spring.jar, STS does this by default)
+	1. Eclipse (while creating xml files we need to add xsd/dtd from spring-beans.jar(org.springframework.core.factory.xml spring-beans-2.0.dtd line no 37-38), STS does this by default)
 	2. Spring Tool Suite ( STS )
 	3. My Eclipse
 	4. NetBeans
