@@ -1,0 +1,45 @@
+
+package beans;
+
+public class Test{
+	public void hello(){
+		System.out.println("Hello World");
+	}
+}
+
+--------------------------
+package resources
+spring.xml
+dtd/spring-beans.jar
+
+<beans>
+	<bean id="t" class="bean.Test"></bean>
+</beans>
+-----------------
+
+package tst;
+public class Client{
+
+	public static void main(String args[]){
+	
+		//find xml
+		Resource = new ClassPathResource("resources/spring.xml");
+		
+		//load xml into container
+		BeanFactory factory = XmlBeanFactory(r);
+		
+		//create test class object
+		Object o = factory.getBean("t");
+		Test t = (Test)o;
+		t.hello();
+	}
+
+}
+
+---------------
+User Library: IOC
+5 jars - 1. commons-logging.jar 2. spring-core.jar 3. spring-beans.jar 4.spring-context.jar 5. spring-expression.jar
+
+---------------
+Note: Spring can create objects of private constructor classes as well.
+But instance can not be create of such a class
