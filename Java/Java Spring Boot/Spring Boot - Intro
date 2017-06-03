@@ -1,0 +1,45 @@
+	Spring Boot - Intro
+	---------------------------
+	1. What is Spring Boot
+	2. Spring Boot Features
+	3. Configuration and Customization
+	
+	
+	What is Spring Boot ?
+	--------------------------
+		Spring is the spring framework that lets us write enterprise java applications.
+		Boot is somthing that lets you bootstrap the spring applications.
+			As per defination, Spring Boot (is a Tool that) makes it 
+				- easy to create stand-alone, 
+				- production grade 
+				- spring based Applications that you can just run.
+				....create.....Spring based applications....
+		
+		It is an opiniated view of how to configure a typical Spring application.
+		
+	What is Spring?
+	------------------
+		Spring  
+			- is an Application Framework that allows you to build Enterprise Java Applications
+			- provides a template that allows us to build enterprise applications
+				- when writing a business service there are a number of things that we do. 
+					- A set of common problems such as Connecting to db, transaction support
+				- Spring provides a template that allows you to build enterprise applications. 
+			- also has a Programming and configuration model
+				- focus on building our business services and let Spring let handle the boilerplate
+			- also provide infrastructure support
+				- has support for connecting to a database
+	
+	Problems with Spring
+	-------------------
+		- It is a huge framework (various combinations and ways of building things) and hence overwhelming
+		- multiple setup/configuration steps (connect to mongodb,RDBMS)
+		- multiple build and deploy steps
+		
+		Spring has a lot of capability and flexability and it comes at a cost
+		- And we are required to do a whole lot to do exactly do what we want it to do
+		- No real starting point or best practice or pathway
+		
+		Would it be cool if we can abstract a few of these steps out ?
+		
+		This is where Spring Boot comes in handy.
