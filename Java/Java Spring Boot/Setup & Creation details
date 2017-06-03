@@ -1,0 +1,32 @@
+
+Set up Spring Boot Project
+-----------------------------------
+	Recommended IDE 	: 	STS - Spring Tools Suite
+	See Configuration	: 	https://spring.io/guides/gs/spring-boot/
+	Recommended SDK		:	Java 8
+	
+	List dependencies in Maven pom.xml
+	
+Creating a Spring Boot Project
+----------------------------------
+	Create a <simple> Maven project
+	Configuration pom.xml	: 	https://spring.io/guides/gs/spring-boot/
+
+	Create a class with main method <stand alone application>
+		Annotate with @ SpringBootApplication -> represents the starting point of Spring Boot
+		SpringApplication.run(<MainClass>.class, args);
+			- Sets up the default configuration : favours convention over configuration, addresses 80% of the cases
+			- Starts Spring application Context : Spring is a container for all ur code that runs on app server such as DataService
+			- Performs class path scan: To identify the various annotations a class may have eg. controller or service
+			- Starts Tomcat server
+			
+Add a Conroller to handle requests
+-----------------------------------
+	A java class
+	Marked with Annotations
+	Has info about
+		- what URL access triggers it?
+		- what method to run when accessed?
+		
+	@RestController at class level - it means you can have methods in this class which map to url request.
+	@RequestMapping("/url") - maps to GET request by default. To map to other request, you need to specify it in the annotation.
