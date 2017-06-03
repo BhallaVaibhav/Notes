@@ -1,45 +1,64 @@
-	Spring Boot - Intro
-	---------------------------
-	1. What is Spring Boot
-	2. Spring Boot Features
-	3. Configuration and Customization
-	
-	
-	What is Spring Boot ?
-	--------------------------
-		Spring is the spring framework that lets us write enterprise java applications.
-		Boot is somthing that lets you bootstrap the spring applications.
-			As per defination, Spring Boot (is a Tool that) makes it 
-				- easy to create stand-alone, 
-				- production grade 
-				- spring based Applications that you can just run.
-				....create.....Spring based applications....
-		
-		It is an opiniated view of how to configure a typical Spring application.
-		
-	What is Spring?
-	------------------
-		Spring  
-			- is an Application Framework that allows you to build Enterprise Java Applications
-			- provides a template that allows us to build enterprise applications
-				- when writing a business service there are a number of things that we do. 
-					- A set of common problems such as Connecting to db, transaction support
-				- Spring provides a template that allows you to build enterprise applications. 
-			- also has a Programming and configuration model
-				- focus on building our business services and let Spring let handle the boilerplate
-			- also provide infrastructure support
-				- has support for connecting to a database
-	
-	Problems with Spring
-	-------------------
-		- It is a huge framework (various combinations and ways of building things) and hence overwhelming
-		- multiple setup/configuration steps (connect to mongodb,RDBMS)
-		- multiple build and deploy steps
-		
-		Spring has a lot of capability and flexability and it comes at a cost
-		- And we are required to do a whole lot to do exactly do what we want it to do
-		- No real starting point or best practice or pathway
-		
-		Would it be cool if we can abstract a few of these steps out ?
-		
-		This is where Spring Boot comes in handy.
+Spring Boot - Intro
+---------------------------
+1. What is Spring Boot
+2. Spring Boot Features
+3. Configuration and Customization
+
+
+What is Spring Boot ?
+--------------------------
+	Spring is the spring framework that lets us write enterprise java applications.
+	Boot is somthing that lets you bootstrap the spring applications.
+		As per defination, Spring Boot (is a Tool that) makes it 
+			- easy to create stand-alone, 
+			- production grade 
+			- spring based Applications that you can just run.
+			....create.....Spring based applications....
+
+	It is an opiniated view of how to configure a typical Spring application.
+
+What is Spring?
+------------------
+	Spring  
+		- is an Application Framework that allows you to build Enterprise Java Applications
+		- provides a template that allows us to build enterprise applications
+			- when writing a business service there are a number of things that we do. 
+				- A set of common problems such as Connecting to db, transaction support
+			- Spring provides a template that allows you to build enterprise applications. 
+		- also has a Programming and configuration model
+			- focus on building our business services and let Spring let handle the boilerplate
+		- also provide infrastructure support
+			- has support for connecting to a database
+
+Problems with Spring
+-------------------
+	- It is a huge framework (various combinations and ways of building things) and hence overwhelming
+	- multiple setup/configuration steps (connect to mongodb,RDBMS)
+	- multiple build and deploy steps
+
+	Spring has a lot of capability and flexability and it comes at a cost
+	- And we are required to do a whole lot to do exactly do what we want it to do
+	- No real starting point or best practice or pathway
+
+	Would it be cool if we can abstract a few of these steps out ?
+
+	This is where Spring Boot comes in handy.
+
+Spring Boot - What does it gives us ?
+-----------------------------------
+	Spring Boot Features 
+
+	- Opinionated: In the sense that it gives you is a good starting point
+		- makes certain configuration choices 
+		- certain decisions 
+		- and says start with it and see if any changes are required.
+
+	- features the Convention over Configuration concept
+		- if you have to do 100 things, it works for 80% things you just need to configure it for the rest 20 percent.
+
+	- is Stand alone
+		- typically when we build a web application or a spring applicaiton we get a .war file
+			- we need to deploy that war file to a server such as tomcat or some other servlet container / applicaiton server
+		- with Spring Boot we get an executable and is ready to run
+
+	- is Production ready
