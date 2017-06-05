@@ -1,0 +1,18 @@
+
+Spring MVC Controller
+---------------------
+	Spring MVC REST API
+		- recieves request URI
+		- maps the uri + HTTP method to a functionality (Java Method)
+		- returns a response in JSON format
+		
+	Course API
+		Resources - are the things in your domain
+			- Topic, Course, Lesson
+				- Topic can have multiple Courses and a Course can have multiple Lessons
+				
+		GET 	/topics			Get all topics
+		GET		/topics/id		Get the particular topic
+		POST	/topics			Create new topic
+		PUT		/topics/id		Update the particular topic
+		DELETE	/topics/id		Delete the particular topic
