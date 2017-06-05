@@ -1,0 +1,6 @@
+Create a SessionFactory
+		- one instance per application
+	
+	Create a session from SessionFactory
+	
+	Use the session to save model objects
