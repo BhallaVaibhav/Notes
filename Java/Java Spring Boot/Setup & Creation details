@@ -30,3 +30,11 @@ Add a Conroller to handle requests
 		
 	@RestController at class level - it means you can have methods in this class which map to url request.
 	@RequestMapping("/url") - maps to GET request by default. To map to other request, you need to specify it in the annotation.
+
+Why does Spring Boot has an Embedded Tomcat server ?
+----------------------------------------------------
+	- Convenience
+	- Servlet container config is now part of appilication config
+	- Standalone application (easy to develop and deploy)
+	- Useful for micro-service architecture (as it requires frequent deployment)
+	
