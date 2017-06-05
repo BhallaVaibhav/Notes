@@ -38,3 +38,11 @@ Why does Spring Boot has an Embedded Tomcat server ?
 	- Standalone application (easy to develop and deploy)
 	- Useful for micro-service architecture (as it requires frequent deployment)
 	
+OTHER ways to Start a Spring Boot app
+-------------------------------------
+	- Spring Initializr : http://start.spring.io
+	- Spring Boot CLI 	: For groovy scripts
+	- STS IDE
+	
+	Configuration
+	
