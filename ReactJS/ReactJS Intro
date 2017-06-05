@@ -1,0 +1,14 @@
+
+React.js Intro
+--------------
+React.js is a javascript library which helps in creating user interfaces with the help of reusable components.
+Core ReactJS is about building views or parts of view. Single components or widgets, which you can then dump on to your views
+
+	HTML webpages can be split up into components such as Header, Footer, navBar, mainArea
+	ReactJS builds up on this idea of splitting your webpage into reusable components
+	
+Diff b/w ReactJS and Angular2
+	Angular2 is a javascript framework which allows you to build single page applications SPA.
+	Diff - Angular2 has out of the box router, supports form validation and so on. Angular2 is there to controll the complete user experience, control the navigation bw pages
+	ReactJS on the other hand can be extended to build SPA
+	Easier to use React with other libraries such as Larvel, Angular2 is not the same.
