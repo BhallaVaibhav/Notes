@@ -1,0 +1,23 @@
+
+Java Inteview Q
+---------------
+Reference: 	http://www.journaldev.com/2366/core-java-interview-questions-and-answers
+			http://javarevisited.blogspot.in/2015/10/133-java-interview-questions-answers-from-last-5-years.html
+
+Q - What are different types of classloaders?
+A - There are three types of built-in Class Loaders in Java:
+		Bootstrap Class Loader – It loads JDK internal classes, typically loads rt.jar and other core classes.
+		Extensions Class Loader – It loads classes from the JDK extensions directory, usually $JAVA_HOME/lib/ext directory.
+		System Class Loader – It loads classes from the current classpath that can be set while invoking a program using -cp or -classpath command line options.
+		
+Q - Java Compiler is stored in JDK, JRE or JVM?
+A - The task of java compiler is to convert java program into bytecode, we have javac executable for that. 
+	So it must be stored in JDK, we don’t need it in JRE and JVM is just the specs.
+	
+Q - What are the important features of Java 8 release?
+A- Java 8 has been one of the biggest release after Java 5 annotations and generics. Some of the important features of Java 8 are:
+	- Interface changes with default and static methods
+	- Functional interfaces and Lambda Expressions
+	- Java Stream API for collection classes
+	- Java Date Time API
+	Reference: http://www.journaldev.com/2366/core-java-interview-questions-and-answers Q:1
