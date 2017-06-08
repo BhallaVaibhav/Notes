@@ -1,0 +1,18 @@
+Type Inference | Lambda Expression
+
+Runnable with Lambda
+
+Functional Interface 
+
+Exception Handling
+	Wrapper functional interface
+	
+Closures
+	concept of effectively final
+
+difference b/w annonymous inner class & Lambda expression
+	reference of "this" keyword.
+	
+Method references	
+
+streams
