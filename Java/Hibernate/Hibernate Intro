@@ -3,6 +3,7 @@ Java Hibernate
 --------------
 
 Problems with conventional/JDBC
+------------------------------
 	Mapping member variables to columns
 		-Every column in Java class needs to be indivually mapped to db column
 	Mapping relationships
@@ -18,6 +19,7 @@ Natural vs Surrogate (Primary) key
 	
 	
 Use Hibernate APIs to save to db
+--------------------------------
 	1. Create a SessionFactory - one instance per application
 	   SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
 	2. Create a session from SessionFactory
