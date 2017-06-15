@@ -1,6 +1,59 @@
-Create a SessionFactory
-		- one instance per application
+
+Java Hibernate
+--------------
+
+Problems with conventional/JDBC
+	Mapping member variables to columns
+		-Every column in Java class needs to be indivually mapped to db column
+	Mapping relationships
+		- user object has another object say address
+	Handling data type conversions ( Both while saving or retriving data )
+	Managing changes to the object state
 	
-	Create a session from SessionFactory
 	
-	Use the session to save model objects
+Natural vs Surrogate (Primary) key
+----------------------------------
+	Natural - is required and has unique value; is a user provided value such as email address, login name, etc
+	Surrogate - is system generated id basically added to give a unique value to the row. acts as identifier and doesnt has business value.
+	
+	
+Use Hibernate APIs to save to db
+	1. Create a SessionFactory - one instance per application
+	   SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+	2. Create a session from SessionFactory
+		Session session = sessionFactory.openSession();
+	3. Use the session to save model objects
+		session.beginTransaction();
+		session.save(xyz);
+		session.getTransaction().commit();
+		session.close();
+
+Annotations
+-----------
+
+	@Entity (name="xyz") - indicates to hibernate that the dto class will form a table in db. 
+						 - optionally name can be set to make it different from class name. Both table name and entity name are updated
+	@Table (name="abc")  - indicates to hibernate that the dto class will form a table in db. 
+						 - optionally name can be set to make it different from class name. Only table name is effected. Entity name is not modified.
+	@Id - For providing primary key
+	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	
+	
+	@Column (name="xyz") - maps values to new name in table
+	@Basic //Treated as a field that should be persisted and apply the hibernate default
+		  // used to configure some other properties such as fetch and optional while still letting hibernate know to treate the fields as default
+		  
+	@Temporal(TemporalType.DATE)
+	
+	@AttributeOverrides({
+		@AttributeOverride(	name="street", column=@Column(name="HOME_STREET_NAME")),
+		@AttributeOverride(	name="pincode", column=@Column(name="HOME_PIN_CODE")),
+	})
+	
+	@Embedabble - on dto class whose object needs to be embedded is some other class.
+				- Items of embedded class will show up as columns in db table in which this dto is embedded
+	@Embedded	- indicates to hibernate that the member variables of embedded class need to be shown as columns of its class
+	@EmbeddedId - indicates that id is embedded. generally id in this case is user provided such as loginName, email address, etc
+	
+	@ElementCollection - indicates Java collections object
+	
