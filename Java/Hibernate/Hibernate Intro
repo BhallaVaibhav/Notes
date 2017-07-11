@@ -11,11 +11,17 @@ Problems with conventional/JDBC
 	Handling data type conversions ( Both while saving or retriving data )
 	Managing changes to the object state
 	
-	
+Retrieving an object 
+-------------------
+	object = (Cast to ClassName)session.get(<className>.class,<primary key value>)
+		
 Natural vs Surrogate (Primary) key
 ----------------------------------
 	Natural - is required and has unique value; is a user provided value such as email address, login name, etc
-	Surrogate - is system generated id basically added to give a unique value to the row. acts as identifier and doesnt has business value.
+	Surrogate - is system generated id basically added to give a unique value to the row. 
+		  - acts as identifier and doesnt has business value.
+	For surrgoate keys, we can ask Hibernate to generate a surrogate key every time we do an insert.
+		  - @GeneratedValue() : Hibernate will look at the last value, add 1 to it and give us a unique value 
 	
 	
 Use Hibernate APIs to save to db
