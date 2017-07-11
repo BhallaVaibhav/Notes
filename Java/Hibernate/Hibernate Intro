@@ -55,12 +55,15 @@ Annotations
 		  
 	@Temporal(TemporalType.DATE)
 	@Lob (can be character lob(clob) or Byte stream(blob) lob. Hibernate picks it up on basis of field datatype on which it is added.)
-		
+
+Embedding an Object
+-------------------
 	@Embedabble 	- on dto class whose object needs to be embedded is some other class.
 			- Items of embedded class will show up as columns in db table in which this dto is embedded
 	@Embedded	- indicates to hibernate that the member variables of embedded class need to be shown as columns of its class
-	@EmbeddedId 	- indicates that id is embedded. generally id in this case is user provided such as loginName, email address, etc
-	
+	@EmbeddedId 	- special case when id is embedded. 
+			- generally id in this case is user provided such as loginName, email address, etc
+			- it is never a generated key.
 	In case we need to modify the name of columns from calling class(say homeAddress & officeAddress), do as following:
 	
 	@Embedded
@@ -69,7 +72,9 @@ Annotations
 		@AttributeOverride( name="pincode", column=@Column(name="HOME_PIN_CODE") ),
 	})
 	private Address homeAddress
-	
+
+Embedding Collections
+---------------------
 	@ElementCollection - indicates Java collections object
 	@JoinTable (name="USER_ADDRESS",
 				joinColumns=@JoinColumn(name="USER_ID") - update name of referrenced/join column in collection table
