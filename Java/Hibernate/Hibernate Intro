@@ -32,7 +32,10 @@ Use Hibernate APIs to save to db
 
 Annotations
 -----------
-
+	Position of Annotations:
+		On top of field defination
+		On top of getter
+		
 	@Entity (name="xyz") - indicates to hibernate that the dto class will form a table in db. 
 						 - optionally name can be set to make it different from class name. Both table name and entity name are updated
 	@Table (name="abc")  - indicates to hibernate that the dto class will form a table in db. 
@@ -40,13 +43,13 @@ Annotations
 	@Id - For providing primary key
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	
-	
 	@Column (name="xyz") - maps values to new name in table
 	@Basic //Treated as a field that should be persisted and apply the hibernate default
 		  // used to configure some other properties such as fetch and optional while still letting hibernate know to treate the fields as default
 		  
 	@Temporal(TemporalType.DATE)
-	
+	@Lob (can be character lob(clob) or Byte stream(blob) lob. Hibernate picks it up on basis of field datatype on which it is added.)
+		
 	@AttributeOverrides({
 		@AttributeOverride(	name="street", column=@Column(name="HOME_STREET_NAME")),
 		@AttributeOverride(	name="pincode", column=@Column(name="HOME_PIN_CODE")),
