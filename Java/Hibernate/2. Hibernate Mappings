@@ -1,0 +1,22 @@
+One-To-One Mapping
+------------------
+  -> Consider a user having one vehicle
+  @JoinColumn(name="Name_Of_Joining_Column")
+
+One-To-Many 
+-----------
+  -> Consider a user with multiple vehicles
+  @JoinTable(name="Name_Of_Mapping_Table",
+              joinColumns=@JoinColumn(name="Column_Name_Of_First_Table"), 
+              inverseJoinColumns=@JoinColumn(name="Column_Name_Of_Second_Table"))
+              
+Many-To-One Mapping
+  -> Consider multiple users having one vehicle ( like a car shared in a family )
+
+Many-To-Many Mapping
+--------------------
+  -> Consider multiple vehicles having multiple users ( car rental service )
+  
+  mappedTo keyword
+  
+  Cascade Operations
