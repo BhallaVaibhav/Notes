@@ -92,4 +92,4 @@ Embedding Collections
 	-----------------------------------------------
 	On Hibernate only initializes the first level of (user) object and not the complete object.
 	Collections and other referenced objects are only when the same are called. ie when the getter method of the referenced  objects is called.
-	
+	@ElementCollection(FetchType.EAGER) -> Eager loading: Fetches the collection obect on first load itself.
