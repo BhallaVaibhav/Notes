@@ -6,9 +6,10 @@ One-To-One Mapping
 One-To-Many 
 -----------
   -> Consider a user with multiple vehicles
-  @JoinTable(name="Name_Of_Mapping_Table",
-              joinColumns=@JoinColumn(name="Column_Name_Of_First_Table"), 
-              inverseJoinColumns=@JoinColumn(name="Column_Name_Of_Second_Table"))
+  @JoinTable(name="Name_Of_Mapping_Table<USER_VEHICLE>",
+              joinColumns=@JoinColumn(name="Column_Name_Of_First_Table<userID>"), 
+              inverseJoinColumns=@JoinColumn(name="Column_Name_Of_Second_Table<vehicleID>"))
+  private Collection<Vehicle> vehicles = new ArrayList<Vehicle>();
               
 Many-To-One Mapping
   -> Consider multiple users having one vehicle ( like a car shared in a family )
@@ -16,7 +17,20 @@ Many-To-One Mapping
 Many-To-Many Mapping
 --------------------
   -> Consider multiple vehicles having multiple users ( car rental service )
-  
-  mappedTo keyword
-  
-  Cascade Operations
+  IMP: mappedTo keyword
+
+@NotFound(action=NotFoundAction.IGNORE) -> Consider an unsold vehicle which doesnt has any user mapped. 
+                                          Especially useful where we r working with some legacy data where data for some of the columns may be missing.
+private UserDetails user;
+
+Hibernate Collections
+---------------------
+  Bag Semantic        -> List/ArrayList
+  Bag Semantic by ID  -> List/ArrayList
+  List Semantic       -> List/ArrayList
+  Set Semantic        -> Set
+  Map Semantic        -> Map
+
+Cascade Operations
+------------------
+
