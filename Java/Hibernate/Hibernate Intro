@@ -77,11 +77,10 @@ Embedding Collections
 ---------------------
 	@ElementCollection - indicates Java collections object
 	@JoinTable (name="USER_ADDRESS",
-				joinColumns=@JoinColumn(name="USER_ID") - update name of referrenced/join column in collection table
-			) - update address of referrenced table name generated for element collection
+		    joinColumns=@JoinColumn(name="USER_ID") - update name of referrenced/join column in collection table
+		) - update address of referrenced table name generated for element collection
 	
-	
-	Add a sequence or index for Collections table
+	Add a Primary key/ Sequence / Index for Collections table
 		@CollectionId - not a JPA annotation
 		
 		@GenericGenerator(name = "sequence-gen", strategy = "sequence") //hilo is common generator type provided by Hibernate
