@@ -22,7 +22,7 @@ Natural vs Surrogate (Primary) key
 		  - acts as identifier and doesnt has business value.
 	For surrgoate keys, we can ask Hibernate to generate a surrogate key every time we do an insert.
 		  - @GeneratedValue() : Hibernate will look at the last value, add 1 to it and give us a unique value 
-	
+		  - strategy=GenerationType.AUTO, Identity, Sequence, Table
 	
 Use Hibernate APIs to save to db
 --------------------------------
@@ -56,15 +56,19 @@ Annotations
 	@Temporal(TemporalType.DATE)
 	@Lob (can be character lob(clob) or Byte stream(blob) lob. Hibernate picks it up on basis of field datatype on which it is added.)
 		
-	@AttributeOverrides({
-		@AttributeOverride(	name="street", column=@Column(name="HOME_STREET_NAME")),
-		@AttributeOverride(	name="pincode", column=@Column(name="HOME_PIN_CODE")),
-	})
-	
-	@Embedabble - on dto class whose object needs to be embedded is some other class.
-				- Items of embedded class will show up as columns in db table in which this dto is embedded
+	@Embedabble 	- on dto class whose object needs to be embedded is some other class.
+			- Items of embedded class will show up as columns in db table in which this dto is embedded
 	@Embedded	- indicates to hibernate that the member variables of embedded class need to be shown as columns of its class
-	@EmbeddedId - indicates that id is embedded. generally id in this case is user provided such as loginName, email address, etc
+	@EmbeddedId 	- indicates that id is embedded. generally id in this case is user provided such as loginName, email address, etc
+	
+	In case we need to modify the name of columns from calling class(say homeAddress & officeAddress), do as following:
+	
+	@Embedded
+	@AttributeOverrides({
+		@AttributeOverride( name="street", column=@Column(name="HOME_STREET_NAME") ),
+		@AttributeOverride( name="pincode", column=@Column(name="HOME_PIN_CODE") ),
+	})
+	private Address homeAddress
 	
 	@ElementCollection - indicates Java collections object
 	@JoinTable (name="USER_ADDRESS",
