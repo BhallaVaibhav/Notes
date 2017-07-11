@@ -33,4 +33,10 @@ Hibernate Collections
 
 Cascade Operations
 ------------------
-
+  Consider One_To_Many, we need to save all references of the many objects before we commit the transaction.
+  In UserDetails class:
+  @OneToMany(CascadeType.Persist)
+  private Collection<Vehicle> vehicle = new ArrayList<Vehicle>();
+  
+  -> session.persist(userDetails) 
+ 
