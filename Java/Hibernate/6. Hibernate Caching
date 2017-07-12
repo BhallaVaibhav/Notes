@@ -1,0 +1,36 @@
+Caching in Hibernate V32
+-------------------------
+First Level Cache - Session
+  Update of persistant object (after save operation) 2 or more times result only in 1 update.
+
+Second Level of Cache
+  - Accross sessions in an application
+  - Accross applications
+  - Accross clusters
+  
+Configuring Second Level cache
+------------------------------
+In hibernate.cfg.xml, check property cache.provider_class. It is set to org.hibernate.cache.NoCacheProvider by default.
+We can use OSCache or EhCache for second level cache.
+
+Add <property name="cache.user_second_level_cache">true</property>
+updagte <property name="cache.provider_class">org.hibernate.cache.EhCacheProvider</property>
+Also, add EhCacheProvider lib to build path
+
+Add annotation @Cacheable to entiy class.
+@Entity
+@Cacheable
+@Cache(usage=CacheConcurrencyStratergy.Read_Only) //Stratergy tells hibernate how you want to configure the cache //hibernate annotation
+
+Query Cache
+-----------
+
+Query query = session.createQuery("from UserDetails where user.userId = 1");
+query.setCachable(true);
+List users = query.list();
+
+session.close();
+execute above statement with another session. u will see 2 query calls.
+
+Add <property name="cache.user_query_cache">true</property> // use with caution as we do not want to clutter the application memory by pushing everything
+set cacheable to true for both the queries.
