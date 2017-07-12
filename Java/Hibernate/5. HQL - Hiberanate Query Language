@@ -63,3 +63,35 @@ public class UserDetails {}
 From executor class,
   Query query = session.getNamedQuery("UserDetails.byName");
   query.setString(0, "User 10");
+
+Criteria API
+------------
+Criteria criteria = session.createCriteria(UserDetails.class);
+criteria.add(Restrications.eq("userName","User 10"))
+        .add(Restricatins.gt("userId",5))
+OR        
+criteria.add(Restrications.like("userName","%User 10%"))
+        .add(Restricatins.between("userId", 5, 50))
+OR
+criteria.add(Restrications.or(Restrications.between("userId", 0, 3), Restrication.between("userId", 7, 10)))
+
+Projections & Query By Example
+------------------------------
+Criteria criteria = session.createCriteria(UserDetails.class);
+                           .setProjection(Projections.property("userId")) //pull up only the property u want and not the whole object
+                           .setProjection(Projections.count("userId"))   //work with aggregation functions
+                           .addOrder(Order.desc)                          //set order on projections
+                           
+                           
+ UserDetails exampleUser = new UserDetails();
+ //exampleUser.setUserId(5);  Note: Hibernate ignores 2 things when it comes to examples 
+                                    1. any of the properties have value as null
+                                    2. primary key values
+ exmapleUser.setUserName("User 5");
+ 
+ Example example = Example.create(exampleUser);
+ //Example example = Example.create(exampleUser).enableLike();
+ //Example example = Example.create(exampleUser).exludeProperty("userName"); // Incase you want to ignore a particular property to be used for search
+ 
+ Criteria criteria = session.createCriteria(UserDetails.class)
+                            .add(example);
