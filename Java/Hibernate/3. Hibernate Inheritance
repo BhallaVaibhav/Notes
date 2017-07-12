@@ -1,1 +1,13 @@
 
+Inheritance - V11
+-----------------
+Consider the following classes:
+  Parent  : Vehicle          - vehcileID, vehicleName
+  Child 1 : TwoWheelerClass  - steeringHandle
+  Child 2 : FourWheelerClass - steeringWheel
+  
+Hibernate doesnt create a separate table for the child classes even though they have been marked with Entity annotation.
+
+A single table with the name of parent class "Vehicle" gets created. 
+A column DTYPE is added which denotes the type of object stored in the row of the table.
+Also, columns for child classes gets created and are only filled by the respective classes. they remain null for other classes.
