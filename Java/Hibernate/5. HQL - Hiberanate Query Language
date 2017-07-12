@@ -1,1 +1,54 @@
 
+Query Object - V25
+--------------------
+Session session = sessionFactory.openSession();
+org.hibernate.Query query = session.createQuery("from UserDetails"); -> Why use hibernate.Query and not persistance API ?
+List<UserDetails> users = (List<UserDetails>)query.list();
+session.getTransaction.commit();
+session.close();
+
+for(UserDetails u: users){
+  System.out.println(u.toString());
+}
+
+How to paginate using HQL
+------------------------
+org.hibernate.Query query = session.createQuery("from UserDetails");
+query.setFirstResult(4); // equivalent to OFFSET in SQL
+query.setMaxResults(5);  // equivalent to LIMIT in SQL
+
+Select options
+-------------
+org.hibernate.Query query = session.createQuery("select userName from UserDetails"); //returns list of User names from UserDetails table
+org.hibernate.Query query = session.createQuery("select new map(userId, userName) from UserDetails"); //returns map of UserId & UserNames from UserDetails table
+org.hibernate.Query query = session.createQuery("select max(userId) from UserDetails"); //returns max value of userId from UserDetails table
+
+SQL injection
+-------------
+var minUserId = 5;
+org.hibernate.Query query = session.createQuery("from UserDetails where userId > minUserId");
+-> above statement has a secutiry problem is open to SQL injection attack as attacker may assign value minUserId = 5 or 1 =1
+
+Parameter Substitution
+----------------------
+var minUserId = 5;
+var userName = "User 10";
+org.hibernate.Query query = session.createQuery("from UserDetails where userId > ? and userName = ?");
+query.setInteger(0, Integer.parseInt(minUserId));
+query.setString(1, userName);
+
+Parameter Binding
+----------------
+var minUserId = 5;
+var userName = "User 10";
+org.hibernate.Query query = session.createQuery("from UserDetails where userId > :userId and userName = :userName");
+query.setInteger("userId", Integer.parseInt(minUserId));
+query.setString("userName", userName);
+
+Named Query
+----------
+
+
+
+
+
