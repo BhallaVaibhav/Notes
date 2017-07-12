@@ -1,31 +1,41 @@
 
 Inheritance (Single Table Stratergy - Default) - V17 & 18
 ----------------------------------------------------------
-@Entity
-@Inheritance(stratergy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="VEHICLE_TYPE",
-                     discrminatorType=DiscriminatorType.String)
-public class Vehicle { }
+    @Entity
+    @Inheritance(stratergy=InheritanceType.SINGLE_TABLE)
+    @DiscriminatorColumn(name="VEHICLE_TYPE",
+                         discrminatorType=DiscriminatorType.String)
+    public class Vehicle { }
 
-@Entity
-@DiscriminatorValue("Bike") - instead of mentioning the className it would store the mentioned value
-public class TwoWheeler expends Vehicle {}
+    @Entity
+    @DiscriminatorValue("Bike") - instead of mentioning the className it would store the mentioned value
+    public class TwoWheeler expends Vehicle {}
 
-Consider the following classes:
-  Parent  : Vehicle          - vehcileID, vehicleName
-  Child 1 : TwoWheelerClass  - steeringHandle
-  Child 2 : FourWheelerClass - steeringWheel
-  
-Hibernate doesnt create a separate table for the child classes even though they have been marked with Entity annotation.
+    Consider the following classes:
+      Parent  : Vehicle          - vehcileID, vehicleName
+      Child 1 : TwoWheelerClass  - steeringHandle
+      Child 2 : FourWheelerClass - steeringWheel
 
-A single table with the name of parent class "Vehicle" gets created. 
-A column DTYPE (Discriminator Type) is added which denotes the type of object stored in the row of the table.
-Also, columns for child classes gets created and are only filled by the respective classes. They remain null for other classes.
+    Hibernate doesnt create a separate table for the child classes even though they have been marked with Entity annotation.
+
+    A single table with the name of parent class "Vehicle" gets created. 
+    A column DTYPE (Discriminator Type) is added which denotes the type of object stored in the row of the table.
+    Also, columns for child classes gets created and are only filled by the respective classes. They remain null for other classes.
 
 Inheritance (Table per class Stratergy) - V19
 ---------------------------------------------
-@Entity
-@Inheritance(stratergy=InheritanceType.TABLE_PER_CLASS)
-public class Vehicle { }
+    @Entity
+    @Inheritance(stratergy=InheritanceType.TABLE_PER_CLASS)
+    public class Vehicle { }
 
-Columns for parent class also get created in the separate table.
+    Columns for parent class also get created in the separate table.
+
+Inheritance (Joined Stratergy) - V20
+---------------------------------------------
+    @Entity
+    @Inheritance(stratergy=InheritanceType.JOINED)
+    public class Vehicle { }
+
+    Parent class entity also has records of clild classes.
+    Child class has parentID and its specific properties.
+    It's in much more normalized form.
