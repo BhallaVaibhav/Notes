@@ -1,29 +1,43 @@
-CRUD Operations - V21
+CRUD Operations - V21 
 ---------------------
   Use session object methods to perform CRUD Operations
   CREATE 	- session.save(<created object>);
-  READ 	- session.get(<EntityClass.class>, <uniqueID>);
+  READ 	  - session.get(<EntityClass.class>, <uniqueID>);
   UPDATE	- 	retrieve or create an object
         update the properties of object.
         session.save(<obj>);
   DELETE	- do a get like : var obj = session.get(<EntityClass.class>, <uniqueID>);
-        session.delete(<pass an object pulled in above steps>);
+            session.delete(<pass an object pulled in above steps>);
+Object States
+-------------
+	Transient -> Persistent -> Detached
+  
+Transient, Persistant & Detached Object - V22 & V 23
+----------------------------------------------------
+  UserDtails user = new UserDetails();
+  user.setUserName("Test User");			// Transient object
 
-Transient, Persistant & Detached Object - V22
----------------------------------------------
+  SessionFactory sessionFactory = new Configuration.configure().buildSessionFactory();
+  Session session = sessionFactory.openSession();
+  session.beginTransaction();
 
-UserDtails user = new UserDetails();
-user.setUserName("Test User");			// Transient object
+  session.save(user);							//Persisted object
+  session.setUserName("Updated User");	//Any changes made in the persisted object gets reflected in the database. These changes are added as seperate UPDATE requests to the db.
+  session.setUserName("Updated User Again");
+  session.getTransaction().commit();
 
-SessionFactory sessionFactory = new Configuration.configure().buildSessionFactory();
-Session session = sessionFactory.openSession();
+  session.close();						//Detached object
+  
+  Session session = sessionFactory.openSession();
+  session.beginTransaction();
+  session.update(user);//Re-attached to session. Hibernate sends update query.
+  //if we want Hibrnate to first do a select to check if object has changed and only then send the update query, then
+  //Add @org.hibernate.annotation.Entity(selectBeforeUdpate=true) on the user object
 
-session.save(user);							//Persisted object
-session.setUserName("Updated User");	//Any changes made in the persisted object gets reflected in the database. These changes are added as seperate UPDATE requests to the db.
-session.setUserName("Updated User Again");
-session.getTransaction().commit();
+  session.getTransaction.commit();
+  session.close();
 
-session.close();						//Detached object
+  Hibernate watches for any changes that you may make to the persisted object before it is commited to the database.
+  Hibernate does not tracks changes to Transient or Detached objects.
+  Hibernate moves the persistant object to transient state on Delete operation.
 
-Hibernate watches for any changes that you may make to the persisted object before it is commited to the database.
-Hibernate does not tracks changes to Transient or Detached objects.
