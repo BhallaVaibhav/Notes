@@ -1,6 +1,16 @@
 
-Inheritance - V17
------------------
+Inheritance (Single Table Stratergy - Default) - V17 & 18
+----------------------------------------------------------
+@Entity
+@Inheritance(stratergy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="VEHICLE_TYPE",
+                     discrminatorType=DiscriminatorType.String)
+public class Vehicle { }
+
+@Entity
+@DiscriminatorValue("Bike") - instead of mentioning the className it would store the mentioned value
+public class TwoWheeler expends Vehicle {}
+
 Consider the following classes:
   Parent  : Vehicle          - vehcileID, vehicleName
   Child 1 : TwoWheelerClass  - steeringHandle
@@ -9,5 +19,6 @@ Consider the following classes:
 Hibernate doesnt create a separate table for the child classes even though they have been marked with Entity annotation.
 
 A single table with the name of parent class "Vehicle" gets created. 
-A column DTYPE is added which denotes the type of object stored in the row of the table.
-Also, columns for child classes gets created and are only filled by the respective classes. they remain null for other classes.
+A column DTYPE (Discriminator Type) is added which denotes the type of object stored in the row of the table.
+Also, columns for child classes gets created and are only filled by the respective classes. They remain null for other classes.
+
