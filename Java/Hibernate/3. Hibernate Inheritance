@@ -22,3 +22,10 @@ A single table with the name of parent class "Vehicle" gets created.
 A column DTYPE (Discriminator Type) is added which denotes the type of object stored in the row of the table.
 Also, columns for child classes gets created and are only filled by the respective classes. They remain null for other classes.
 
+Inheritance (Table per class Stratergy) - V19
+---------------------------------------------
+@Entity
+@Inheritance(stratergy=InheritanceType.TABLE_PER_CLASS)
+public class Vehicle { }
+
+Columns for parent class also get created in the separate table.
