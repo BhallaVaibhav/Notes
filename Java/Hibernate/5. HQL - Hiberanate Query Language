@@ -14,8 +14,8 @@ for(UserDetails u: users){
 How to paginate using HQL
 ------------------------
 org.hibernate.Query query = session.createQuery("from UserDetails");
-query.setFirstResult(4); // equivalent to OFFSET in SQL
-query.setMaxResults(5);  // equivalent to LIMIT in SQL
+query.setFirstResult(4); // Skip first 4 records. Equivalent to OFFSET in SQL.
+query.setMaxResults(5);  // pull up max 5 records even though there may be more records present. equivalent to LIMIT in SQL
 
 Select options
 -------------
