@@ -1,6 +1,5 @@
 Core Java
 	Concurrency in Java
-	Java 8 Lambda expressions
 	Enum details
 
 Web Security in Java
@@ -14,6 +13,7 @@ Web Security in Java
 		
 Design Patterns in Java
 
-Hibernate
 Spring
 EJB
+
+SOAP UI test cases
