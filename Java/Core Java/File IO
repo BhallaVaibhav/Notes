@@ -1,0 +1,168 @@
+File io Notes
+--------------
+1 File
+2 FileWriter 		- to write text data to file
+3 FileReader 		- to read text data from file
+4 BufferedWriter 	-  
+5 BufferedReader 	-
+6 PrintWriter		-
+
+File
+====
+//creating a java file object to represent file "abc.txt". No physical file is created
+File f = new File("abc.txt"); 
+
+//return false if physical file does not exist
+System.out.println(f.exists());
+
+//create new file
+f.createNewFile();
+
+Java file object is used to represent both File and Directory.
+File f = new File(abc);//directory
+f.mkdir(); //make directory
+
+File::Constructors
+------------------
+File f = new File(String fileName); //to represent resources(file/directory) in current working directory
+File f = new File(String subDir, String fileName)//to represent resources in sub-directory/other directory(absolutePath)
+File f = new File(File f1,String fileName);//to create file in dir represented by file f1
+
+File::Methods
+-------------
+boolean f.exists();
+boolean f.createNewFile(); //create a new file. Returns true is file created, false if file already exists
+boolean f.makedir();
+boolean f.isFile();
+boolean f.isDirectory();
+String[] s = f.list();//list of all files/directories in directory f
+long f.length(); // no of chars present in a file
+boolean f.delete();
+
+FileWriter
+==========
+PURPOSE: Write char/text data to the file
+
+FileWriter::Constructors
+------------------------
+/* if specified file not available then it will create file and then write data */
+FileWriter fw = new FileWriter(String fileName); //override existing data
+FileWriter fw = new FileWriter(File file);	//override existing data
+
+FileWriter fw = new FileWriter(String fileName, boolean append); 
+FileWriter fw = new FileWriter(File file, boolean append);
+
+FileWriter::Methods
+-------------------
+fw.write(int ch);//write a single char to file. ch is unicode value
+	eg. fw.write(100);// writes D to file
+fw.write(char[] ch);
+fw.write(String s);
+fw.flush();// to give guarantee that total data including last data has been written to file. Applicable for all writers
+fw.close();// applicable to all writers
+
+Problem with FileWriter
+-----------------------
+Have to enter line separator manually. \n .Line separator may vary for diff systems.
+
+FileReader
+==========
+PURPOSE: to read char/text data from file
+
+FileReader::Constructor
+-----------------------
+FileReader fr = new FileReader(String filename);
+FileReader fr = new FileReader(File f);
+
+FileReader::Methods
+-------------------
+int read(); // reads 1 char at a time. int is unicode value of char. Returns -1 at end of file
+
+int read(char[] ch); // returns number of chars read
+	eg. char[] ch = new char[100]; //not recommended to have fixed size array
+		fr.read(ch);// returns 100
+		
+		char[] ch = new char[(int) f.length()]; 
+		//recommended to have char arr = length of file. Max size of arr=int
+		// Not recommended if length of file > int range
+		fr.read(ch);// reads complete file in 1 go
+		for(char ch1:ch){ syso(ch1) }
+void close();
+
+BufferedWriter
+==============
+Usage of FileReader && FileWriter is not recommended.
+FileWriter - insert line separator manually.
+FileReader - reading 1 char/fixed char not efficient. reading file.length() can cause runtime error if file.length() > int range.
+
+BufferedWriter::constructors
+---------------------------
+BufferedWriter bw = new BufferedWriter(Writer w);	// default bufferSize: 8192
+BufferedWriter bw = new BufferedWriter(Writer w, int bufferSize);//if required to customize bufferSize
+
+BufferedWriter::Methods
+-----------------------
+write(int ch)
+write(char[] ch)
+write(String s)
+flush()
+close(); // closes underlying fileWriter automatically
+newLine()
+
+
+BufferedReader // Most Enhanced - Should use
+==============
+Read line by line. Cannot communicate directly with file.
+
+BufferedReader::Constructors
+----------------------------
+BufferedReader br = new BufferedReader(Reader r);	// default bufferSize: 8192
+BufferedReader br = new BufferedReader(Reader r, int bufferSize);
+
+BufferedReader::Methods
+----------------------------
+int read(); // reads 1 char at a time. int is unicode value of char. Returns -1 at end of file
+int read(char[] ch); // returns number of chars read
+void close();
+String readLine(); //return null at end of file
+
+
+PrintWriter //Most enhanced - Use by default
+===========
+handles new line gracefully
+can write all primitive types directly
+
+PrintWriter::Constructors
+-------------------------
+PrintWriter pw = new PrintWriter(String fileName);
+PrintWriter pw = new PrintWriter(File file);
+PrintWriter pw = new PrintWriter(Writer w);
+
+PrintWriter::Methods
+--------------------
+write(int ch)
+write(char[] ch)
+write(String d)
+flush();
+close();
+
+print(char ch)&& println(char ch)
+print(int i) && println(int i)
+print(double d) && println(double d)
+print(boolean b) && println(boolean b)
+print(String s) && println(String s)
+
+Hierarchical Class Model
+----------------
+Object 	-- 	Writer(Abstract Class)
+			-- OutputStreamWriter -- FileWriter
+			-- BufferedWriter
+			-- PrintWriter
+
+		-- 	Reader(Abstract Class)
+			-- InputStreamReader -- FileReader
+			-- BufferedReader
+
+
+Binary Data : Audio/video/images/pdf/doc
+========================================
