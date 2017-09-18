@@ -30,3 +30,28 @@ Aquiring and releasing the lock internally taken care by JVM and Programmer not 
 	Good programming practice: 
 		Where state of object is changing should be in synchronized area 	eg. Add, Update, Delete
 		Where state not changing should be in non-synchronized area 		eg. Read 
+Static Synchronizated method :: Class level lock
+	public static synchronized void wish(name){}
+		We will get regular output even if we have 2 shared objects.
+	Class Level lock : 	Every class in Java has this unique lock similar to Object level lock. 
+				If a thread wants to introduce static syncronization then a class level lock is required.
+						
+Syncronized Block
+	If only few lines of code need syncronization then we should use synchronized block instead of declaring the whole method as synchronized.
+	-> Advantages: Doesnt degrade performance
+	synchronized(this){... ...} :: If get lock of current object
+		If a thread got lock on current object then only it would be execute on this (block) area code
+	synchronized(b) {... ...} :: If thread gets lock of particular object b, then only it is allowed to execute this (block) area code
+	synchronized(Display.class) :: If thread gets lock of class level lock of Display class then it can execute the block area code
+	
+	int x = 100
+	synchronized(x){ syso(...)}
+		->Error: unexpected type found: int required : reference
+	synchronized block can only hold lock of object or class type. If we pass integer or any other primitive type then we will get the above error.
+	
+What is Race Condition?
+	if multiple thereads are operating on same java object and causing data inconsistency then we have race conditon
+	we can use synchronized concepts to mitigate the same
+	
+Can a Thread aquire multiple locks?
+	Yes but on multiple objects
