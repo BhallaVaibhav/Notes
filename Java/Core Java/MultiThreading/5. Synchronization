@@ -1,0 +1,32 @@
+Synchronization
+----------------
+Synchronization solves data inconsistency problem on a shared java resource.
+
+Syncronized is a modifier applicable only for methods & blocks but NOT for Classes and Variables
+If multiple threads try to operate simultaneously on the same java object(shared resource) then there may be a chance of data inconsistency problem.
+To overcome this problem we should go for synchronized keyword.
+If a method or block declared as Syncronized then at a time only 1 thread is allowed to execute that method or block on the given object so that data inconsistency problem is not encountered.
+
+Disadvantage: 
+It increases waiting time of threads and creates performance problems. 
+Hence, if there is no specific requirement then it is not recommended to use synchronized keyword
+
+Object Monitor/Lock:
+Internally, syncronization concept is implemented by using lock. Every object in java has a unique lock. 
+Whenever we are using synchronized keyword then only lock concept comes into picture.
+
+If a thread wants to execute synchronized method on the given object then it needs to aquire the lock of that object. 
+Once Thread gets the lock then it is allowed to execute any synchronized method on that object.
+Remaining threads are not allowed to execute any synchronized method simultaneously on that object but are allowed to execute non-synchronized methods simultaneously.
+Once method execution completes then automatically Thread releases the lock.
+Aquiring and releasing the lock internally taken care by JVM and Programmer not responsible for this activity.
+
+	------------------------
+	| Syncronized Area	   |	-> can be accessed by only one Thread
+	------------------------
+	| Non-Syncronized Area |	-> can be access by as many Thread
+	------------------------
+
+	Good programming practice: 
+		Where state of object is changing should be in synchronized area 	eg. Add, Update, Delete
+		Where state not changing should be in non-synchronized area 		eg. Read 
