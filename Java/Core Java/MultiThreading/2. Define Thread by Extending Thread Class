@@ -1,0 +1,45 @@
+
+Defining a Thread By Extending Thread Class
+-----------------------------------------
+		
+		MyThread myThread = new MyThread();	-> Thread Instantiation
+		myThread.start();					-> Starting a Thread
+		Every Thread has a run() method. This method is the "JOB of the Thread"
+
+Q: What is the difference bw t.start() & t.run()
+		t.start() -> A new thread would be created that is resposible to execute the job.
+		t.run() -> No new thread would be created and t.run() will be executed as a normal method by the main method.
+		
+	Purpose of start() method
+		1. Register this thread with Thread Schedular
+		2. Perform all other mandatory activities
+		3. Invoke run() method
+		start() method is considered as "HEART of Multi-threading" as it is the only method that can initiate a thread.
+		
+Q: Can the run() method in thread class be overloaded?
+	Yes. The run method can be overloaded but Thread class start method would call no-args run method only.
+	other overloaded methods can be considered as normal regular functions
+	
+Q: What if Thread class doesnt has start() method?
+	run() method of super class ie Thread class run method would be called
+	Note: Thread class run method has empty implemention. Hence we would not get any output.
+	
+Q: Is it recommended to override run method of Thread class ?
+	Run method defined the job of the Thread.
+	Hence it is highly recommended to override the Thread class run() method and define the job.
+	If we do not overrid the run method of Thread class then we are missusing the multihreading concept.
+	
+Q. What if you define start method in Thread class?
+	start() method is executed as a normal method and new thread doesnt get created as start() method of Thread class doesnt get chance to run.
+	Include super.start();  in start method of start method of the thread for multihreading.
+	
+LIFECYCLE OF Thread
+------------------
+MyThred t = new MyThread -- |new/born|
+	--> t.start() -- Ready/Runnable 
+	-- |if Thread scheduler allocates processor| --> Running 
+	-- |if run method completes| --> Dead
+	
+	
+Q: What will happen if you try to start a thread already started?
+	compiler will throw Runtime exception -> IllegalThreadStateException
