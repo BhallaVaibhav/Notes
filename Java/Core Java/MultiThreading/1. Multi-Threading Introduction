@@ -1,0 +1,29 @@
+
+Muti-Tasking :: Introduction
+-------------------------
+	Executing multiple tasks simultaneously where
+	2 Types:
+		1. Multi-Processing :: Process Based 	: 	each task is a separate independent program/process. Best suitable at OS level.
+		2. Multi-Threading  :: Thread Based		:   each independant task is part of same program/process.  Best suitable at Program level.
+		
+	Important areas of Multi-Threading are:
+		- To develop multimedia graphics / animations / video games
+		- To develop Webservers & application servers
+		
+	Java provides inbuilt support of multithreading with Rich API ( eg. Thread, Runnable, Thread Group ...) 
+	
+	Advantage of Multi-Threading:: enhances the performance of a Process
+	
+	What is a Thread ?
+		Thread is the smallest unit of execution of a program
+	
+	How to define a Thread
+		- By Extending Thread Class
+		- By Implementing Runnable interface
+		
+	Thread Scheduler
+		If multiple Threads are waiting for execution then the order of execution is decided by Thread Scheduler
+		It is part of JVM. Algorithm for Scheduler is JVM dependent.
+		Order of execution of Threads or Thread exact output cannot be garanteed but we can provide several possible outputs.
+	
+	=> Next:: Define A Thread
