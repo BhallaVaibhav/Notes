@@ -1,0 +1,30 @@
+Defining a Thread by implmenting Runnable Interface
+--------------------------------------------------
+myThread -> Extends Thread -> Implements Runnable
+	Thread class in itself implements Runnable Interface
+	
+We can define a Thread by implmenting Runnable interface directly
+
+java.lang.Runnable
+	- contains only one method :: public void run();
+	
+Which approach of defining a Thread is recommended ?
+	By extending Runnable interface is preffered.
+	- If a class extends Thread class we cannot extend any other class as Mutiple inheritance is not available in java. Hence we miss benefits of Inheritance.
+	
+Thread Class Constructors
+-------------------------
+1. Thread t = new Thread();
+2. Thread t = new Thread(String name);
+3. Thread t = new Thread(Runnable r);
+4. Thread t = new Thread(Runnable r, String name);
+5. Thread t = new Thread(ThreadGroup g, String name);
+6. Thread t = new Thread(ThreadGroup g, Runnable r);
+7. Thread t = new Thread(ThreadGroup g, Runnable r, String name)
+8. Thread t = new Thread(ThreadGroup g, Runnable r, String name, long stackSize);
+
+
+Getting & Setting Thread name
+----------------------------
+public final String getName()			eg: Thread.currentThread().getName();
+public final void setName(String name)
