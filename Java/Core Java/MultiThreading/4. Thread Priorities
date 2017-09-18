@@ -1,0 +1,55 @@
+Thread Priorities
+-----------------
+Valid range of Thread Priorities : 1 to 10
+
+Thread.MIN_PRIORITY = 1
+Thread.NORM_PRIORITY = 5
+Thread.MAX_PRIORITY = 10
+
+Thread Scheduler uses thread priority while allocating processor.
+
+public final int getPriority();
+public final void setPriority(int p); 	valid range 1-10 otherwise IllegalAgrumentException
+
+IMP: default priority is inherited from parent to child ie whatever priority parent thread has, the same priority will be there for child thread
+Note: Some platforms/OS do not provide support for Thread priorites
+
+Q: How many ways can we prevent Thread Execution?
+
+yield() - causes to PAUSE current executing thread and give the chance for waiting threads of same priority. 
+		If there is no waiting thread or all WAITing thread have low priority then same thread can continue its execution.
+		The thread which is yielded when it will get the change again depends on mercy of thread scheduler & we cant expect exactly.
+		
+		public static NATIVE void yield();
+		
+		Thread.yield() causes Thread state change from Running to Ready/Runnable
+		Note: Some platforms/OS may not provide support for yield() method since it is NATIVE method.
+		eg: Long batting person in public booth
+		
+join():	If a thread wants to wait until another method completes.
+		Helps in sequencing activities.
+		eg. Venue Fixing activity (t1)
+			Wedding card printing (t2) 		t1.join();
+			wedding card distribution(t3) 	t2.join();
+		
+		public final void join() throws InteruptedException;
+		public final void join(long ms) throws InteruptedException;
+		public final void join(long ms, int ns) throws InteruptedException;
+		eg. if a friend is waiting for my class to get over and sm1 asks him for tea then it can throw interruped exception.
+		
+		Waiting thread goes back to Ready/Runnable state when:
+		1. If the thread to which waiting thread(blocked for joining) is joined, completes
+		2. If waiting time expires.
+		3. If waiting thread gets interruped
+		
+		If a Thread calls join method on itself then it gets stuked in a deadlock.
+		Thread.getCurrentThread().join();
+		
+sleep(): exection remains with the sleeping thread.
+	public static final NATIVE void sleep(long ms) throws InteruptedException;
+	public static final void sleep(long ms, int ns) throws InteruptedException;
+	
+public void interrupt(){}
+	Note: A thread can interrupt a Sleeping Thread or Waiting Thread by using interrupt method of Thread class.
+	If a Thread not in waiting or sleeping state is interruped with method interrupt() then scheduler waits for the method to get into waiting or sleep stage and then the interruped exception is raised.
+	Joke: Its like a snake that will wait to get chance to interrupt sleep or waiting state.
