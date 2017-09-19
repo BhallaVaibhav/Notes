@@ -77,3 +77,14 @@ Producer-Consumer Example
 Diff bw notify and notifyAll ?
 
 	Doubt:What is the state of threads after notifyAll method ?
+DeadLock
+--------
+	A lock without key. Long waiting of a Thread where waiting never ends.
+	If 2 threads are waiting for each other (to release the lock on object) in infinite loop then they are said to be in a deadlock.
+	
+	Prevention techniques for DeadLock ?
+		Diligently use Synchronized keyword
+		
+DeadLock vs Starvation
+	Long waiting of a Thread to get Thread schedular where waiting waits a a certain point.
+	For eg. Low priority thread has to wait until high priority threads complete execution
