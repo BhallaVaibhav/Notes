@@ -1,0 +1,45 @@
+Demon Threads
+-------------
+	The treads executing in the background are Demon Threads
+		eg. Garbage Collector, Attach Listener, Signal Dispatcher
+	Main objective of demon threads is to provide support for non-demon threads (main threads)
+	Demon threads generally run with low priority but based on our/system requirement demon threads can run with high priority also
+	
+	public boolean isDemon	:: 	mt.isDemon() - to check if thread is demon thread
+	public void setDemon	::	mt.setDemon() - to change demon nature of thread
+								demon nature can only be changed before starting of thread or else Exception: IllegalThreadStateException
+	
+	Demon nature of Thread inherits from parent to child.
+		Main thread is non-demon
+	
+	Is it possible to change demon nature of Main thread?
+		No. as JVM already starts the Thread at the very beginning of program.
+		
+	Once all non-demon threads complete then all demon threads will terminate as well.
+	
+
+	Java multiThreading concept is implemented by the following 2 Thread Models:
+		Green Thread Model
+		------------------
+			The thread which is completely managed by JVM without taking help from underlying OS then it is called GREEN Thread
+			Most OS doesnt provide support for Green Thread model
+			Sun Solaris proivde support for Green Thread model
+			Green Thread model is now depricated
+			
+		Native OS Model
+		---------------
+			The thread managed by JVM with support for underlying OS
+			All windows based OS support only native based OS models
+			
+	How to stop a Thread?
+		public void stop(); - method is now depricated/supperessed.
+			run(){
+				open db connection
+				Read data			- if user calls stop method now then db connection would remain open
+				close connection
+			}
+			
+	How to suspend and resume a Thread?
+		public void suspend(); - we can suspend a thread by using suspend method of Thread class. Then immediately, the thread will enter into suspended state.
+		public void resume();  - we can resume a suspended thread by using resume method of Thread class. Then suspended thread can continue its execution.
+		These methods are depricated and not recommended to use.
