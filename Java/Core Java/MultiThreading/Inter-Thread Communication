@@ -1,0 +1,79 @@
+Inter-Thread Communication
+--------------------------
+
+How does Threads perform Inter-Thread communication?
+	Threads can communicate with one another by using wait(), notify(), notifyAll() methods
+	The thread which is expecting updation is responsible to call wait() method. Them immediately the thread will enter into waiting state.
+	The thread which is responsible to perform updation, after performing updation, is responsible to call notify() method. 
+		Then waiting thread gets that notification and continue its execution with those updated items.
+	
+	Again:
+		Which thread calls wait method?
+			The thread which is expecting operation.
+		
+		Which thread calls notify method?
+			The thread which is performing updation.
+			
+	Use Case: A person waiting for letter needs to wait for postbox to notify.
+
+
+Q: 	Why methods Wait() notify() notifyAll() present in Object class but not in Thread class ?
+	OR Even though we are not going to use these methods other than multi-Threading then why are these present in Object class ?
+	
+	Thread is waiting updation on a java object. When that object calls notify then the waiting thread comes into action.
+	Thread registers to wait for object lock. When it gets notify call on that object it gets into race condition to get the lock.
+	Thread is for processing. Lock is for object.
+	Thread can call these methods on any java object.
+	
+	Note: A thread can have lock on multiple objects
+	
+What are the Conditions for calling wait(), notify(), notifyAll() method on any object?
+	1. If a thread wants to call wait method on an object. The thread should be owner of that object.
+		if it is not the owner then an Exception: IllegalMonitorStateException would be raised
+	2. When is a Thread said to owner of object?
+		When a Thread has lock of the object then it is called the owner of the object.
+	3. Thread should be inside synchronized area
+		if Thread calling wait method is not in synchronized area then it throws an Exception: IllegalMonitorStateException	
+
+	If a Thread calls wait method on any object then it immediately releases the lock of that particular object and enter into waiting state.
+	
+	If a Thread calls notify method on any object then it releases the lock of the object but maynot immediately.
+	
+	Except wait notify & notifyAll there is no other method where thread releases the lock.
+		Doubt: yield method only releases lock if threads of same priority waiting for lock. Else No.
+		
+		
+	public final void wait() 				throws InterrupedException;
+	public final native void wait(long ms)	throws InterrupedException;
+	public final void wait(long ms, int ns) throws InterrupedException;
+	
+	public final native void notify();
+	public final native void notifyAll();
+	
+	
+	Lifecycle
+		new born: 		MyThread mt = new MyThread()
+		initialization:	mt.start()
+		Ready/Runnable:	
+			If thread gets allocation
+		Running
+			If thread run completes
+		Dead
+		
+		Running:
+			obj.wait(); obj.wait(1000); obj.wait(1000,100);
+		Waiting State
+			if waiting thread got notification
+			if time expires
+			if waiting thread got interruped
+		Another Waiting state: to get lock
+			if waiting thread got lock
+		Ready/Runnable
+
+
+Producer-Consumer Example		
+		http://www.geeksforgeeks.org/producer-consumer-solution-using-threads-java/
+		
+Diff bw notify and notifyAll ?
+
+	Doubt:What is the state of threads after notifyAll method ?
