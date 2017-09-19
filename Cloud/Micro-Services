@@ -1,62 +1,63 @@
 MicroServices - 
 	dividing the bussiness responsibilties into small chunks of individual responsibilties
 	eg. Amazon offers n number of services. Consider each service as a seperated microservice.
-	
-	
-	instead of having one monolithic distributed application that handles a number of bussiness responsibilites (as in case of SOA)
-	these responsibilites can be broken into individual responsibilities that a single microservice handles
-		distinct advantages of such an approach would be
-		
-		ADVANTAGES: While the total amount of functionality is unchanged, the application has been broken up into manageable chunks or services. 
-			- Modularity: Each service has a well defined boundary in the form of an RPC or messagedriven API.
-			- Faster Development: individual services are much faster to develop, and much easier to understand and maintain.
-			- Choice of Technology: The developers are free to choose whatever technologies make sense, provided that the service honors the API contract.
-			 this freedom means that developers are no longer obligated to use the possibly obsolete technologies that existed at the start of a new project. 
-			- Easier Deployment: the Microservices Architecture pattern enables each microservice to be deployed independently. 
-			- the Microservices Architecture pattern enables each service to be scaled independently.
-				
-			- each microservice can choose its own domain, technology, database
-			- each microservice can be singly updated and deployed without affecting the whole system'
-			- in case a microservice fails/crashes, its impact would not be as major as in a monolithic application
-			
-		DISADVANTAGES: MicroService is no Silver Bullet.
-			Intercommunication in a distributed envoirnment: 
-			- Developers need to choose and implement an inter‑process communication mechanism based on either messaging or RPC.
-			  Moreover, they must also write code to handle partial failure since the destination of a request might be slow or unavailable. 
-			-partitioned database architecture
-				ACID (atomicity, consistency, isolation, durability) is a set of properties that guarantee database transactions are processed reliably.
-			-Another major challenge with the Microservices Architecture pattern is implementing changes that span multiple services. 
-			
-		
+
+	Instead of having one monolithic distributed application that handles a number of bussiness responsibilites 
+	(as in case of SOA). These responsibilites can be broken into individual responsibilities that a single microservice 
+	handles	distinct advantages of such an approach would be
+
+	ADVANTAGES: While the total amount of functionality is unchanged, the application has been broken up into manageable chunks or services. 
+		- Modularity: Each service has a well defined boundary in the form of an RPC or messagedriven API.
+		- Faster Development: individual services are much faster to develop, and much easier to understand and maintain.
+		- Choice of Technology: The developers are free to choose whatever technologies make sense, provided that the service honors the API contract.
+		 this freedom means that developers are no longer obligated to use the possibly obsolete technologies that existed at the start of a new project. 
+		- Easier Deployment: the Microservices Architecture pattern enables each microservice to be deployed independently. 
+		- Scalability: the Microservices Architecture pattern enables each service to be scaled independently.
+
+		- each microservice can choose its own domain, technology, database
+		- each microservice can be singly updated and deployed without affecting the whole system'
+		- in case a microservice fails/crashes, its impact would not be as major as in a monolithic application
+
+	DISADVANTAGES: MicroService is no Silver Bullet.
+		Intercommunication in a distributed envoirnment: 
+		- Developers need to choose and implement an inter‑process communication mechanism based on either messaging or RPC.
+		  Moreover, they must also write code to handle partial failure since the destination of a request might be slow or unavailable. 
+		- Partitioned database architecture
+			ACID (atomicity, consistency, isolation, durability) is a set of properties that guarantee database transactions are processed reliably.
+		- Another major challenge with the Microservices Architecture pattern is implementing changes that span multiple services. 
+					
 BUILDING MICRSERVICES
-			An API Gateway is a server that is the single entry point into the system. It is similar to the Facade pattern from object‑oriented design.
-			 A major benefit of using an API Gateway is that it encapsulates the internal structure of the application. 
-			
-			The API Gateway also has some drawbacks. 
-			- It is yet another highly available component that must be developed, deployed, and managed. 
-			- There is also a risk that the API Gateway becomes a development bottleneck.
-			- Developers must update the API Gateway in order to expose each microservice’s endpoints. It is important that the process for updating the API Gateway be as lightweight as possible
-		Implementing an API Gateway
-			Performance and Scalability:
-				- API Gateway may need to handle millions of request per day
-				- It makes sense, therefore, to build the API Gateway on a platform that supports asynchronous, nonblocking I/O
-				 On the JVM: Netty, Vertx, Spring Reactor, or JBoss Undertow
-				 Popular non-JVM option is Node.js
-			Using a Reactive Programming Model
-				Writing API composition code using the traditional asynchronous callback approach quickly leads you to callback hell. The code will be tangled, difficult to understand, and error‑prone. A much better approach is to write API Gateway code in a declarative style using a reactive approach. 
-			
-			
+	An API Gateway is a server that is the single entry point into the system. 
+	It is similar to the Facade pattern from object‑oriented design.
+	A major benefit of using an API Gateway is that it encapsulates the internal structure of the application. 
+
+	The API Gateway also has some drawbacks. 
+	- It is yet another highly available component that must be developed, deployed, and managed. 
+	- There is also a risk that the API Gateway becomes a development bottleneck.
+	- Developers must update the API Gateway in order to expose each microservice’s endpoints. 
+	  It is important that the process for updating the API Gateway be as lightweight as possible
+	
+	Implementing an API Gateway
+		Performance and Scalability:
+			- API Gateway may need to handle millions of request per day
+			- It makes sense, therefore, to build the API Gateway on a platform that supports asynchronous, nonblocking I/O
+			  On the JVM: Netty, Vertx, Spring Reactor, or JBoss Undertow
+			  Popular non-JVM option is Node.js
+		Using a Reactive Programming Model
+			 Writing API composition code using the traditional asynchronous callback approach quickly leads you to callback hell. 
+			 The code will be tangled, difficult to understand, and error‑prone. 
+			 A much better approach is to write API Gateway code in a declarative style using a reactive approach. 
 			
 Service Invocation: Interprocess Communication Mechanism
-		A microservices‑based application is a distributed system and must use an inter-process communication mechanism. 
-		There are two styles of inter-process communication. 
-			- One option is to use an asynchronous, messaging‑based mechanism. Some implementations use a message broker such as JMS or AMQP. 
-			- The other style of inter-process communication is a synchronous mechanism such as HTTP or Thrift. 
+	A microservices‑based application is a distributed system and must use an inter-process communication mechanism. 
+	There are two styles of inter-process communication. 
+		- One option is to use an asynchronous, messaging‑based mechanism. 
+		  Some implementations use a message broker such as JMS or AMQP. 
+		- The other style of inter-process communication is a synchronous mechanism such as HTTP or Thrift. 
 
 Service Discovery
-		Client Side
-		Server Side
-		
+	Client Side
+	Server Side
 		
 Microservices and the Problem of Distributed Data Management
 	Event‑Driven Architecture
