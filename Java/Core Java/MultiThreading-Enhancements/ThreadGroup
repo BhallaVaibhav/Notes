@@ -1,0 +1,16 @@
+Thread Group
+------------
+	Based on functionality we can group threads into a single unit which is nothing but a Thread Group.
+	A thread group can contain a group of threads
+	In addition to threads, thread group can also contain sub Thread groups
+	The main Advantage of maintaining Threads in the form of Thread Group is: 
+		- we can perform common operations easily
+		eg. yahoo messenger: send wishes to Friends group, relative groups
+			set thread priority to group
+	
+	Note: Every Thread in java belongs to some Thread group :: Thread.getCurrentThread().getThreadGroup().getName()
+		  Every Thread group is child thread group of System Thread group.
+	eg of System level threads:
+		Finalizer, Reference Handler, Signal Dispatcher, Attach Listener
+		
+	ThreadGroup is direct child class of Object class
