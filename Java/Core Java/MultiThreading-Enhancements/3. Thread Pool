@@ -1,0 +1,43 @@
+Thread Pools ( Executor Framework )
+----------------------------------
+	Creating a new Thread for every job may create Performance and memory problems. 
+	To overcome this, we should go for Thread Pool.
+	Thread Pool is a pool of already created threads ready to do our job.
+	Java 1.5 version introduced Thread Pool framework to implement Thread Pools. 
+	Thread Pool framework is also known as Executor Framework.
+	
+	What is the need of Thread Pool?
+		Performance enhancement. Creating same Threads over time consumes compute cycles and have overheads, impact performance.
+		eg. Connection pool in JDBC
+	
+	We can create a thread pool as follows:
+		ExecutorService service = Executors.newFixedThreadPool(3);
+	We can submit a runnable job by using "submit" method
+		service.submit(job);
+	We can shutdown executor service by using shutdown method
+	
+	While developing application/web servers we can use concept of Thread pool.
+	
+Callable Vs Runnable | Callable Future object
+--------------------------------------------
+	
+	Sometimes a return value is expected at the end of run method. we need to use Callable in such a scenario.
+	
+	Run method of Runnable interface does not return any value at end of execution.
+	If a thread is required to return a result after execution then we should go for Callable instead of Runnable.
+	Callable interface contains only 1 method: 
+		public object call() throws Exception{} 
+	
+	If we submit a callable object to executor then after completing the thread job, thread returns an object of type Future.
+	
+	class myRunnable implements Callable{
+		public Object call() throws Exception{
+			
+		}
+	}
+	
+	Future r = service.submit();
+	syso(r.get());
+	Future object is used to hold value of object returned by Callable Thread.
+	Future object is used to retrieve result from callable job.
+	
