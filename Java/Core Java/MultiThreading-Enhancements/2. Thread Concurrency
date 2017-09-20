@@ -1,0 +1,64 @@
+Concurrency
+-----------
+java.util.concurrent.locks package
+
+For locks, we can set fairness policy for longest waiting threads to get the lock.
+We can also find out the number of waiting threads.
+
+Problems with Traditional synchronized keyword:
+	1. We do not have any flexibility to try for a lock without waiting.
+	2. There is no way to specify maximum waiting time for thread to get lock. Hence thread has to wait untill getting the lock.
+	   Such a scenario will create perormance problems and may also cause DeadLock
+	3. If a thread releases the lock then which waiting thread will get that lock is not under our control.
+	4. There is no API to list out all waiting threads for a lock.
+	5. Synchronized terminology applicable only at method or block level but not across multiple methods
+	
+To overcome the above problems. SUN introduced java.util.concurrent.locks package in JDK version 1.5
+It also provides several enhancements to the programmer to provide more control on concurrency.
+
+Lock(Interface)
+	Lock object is similar to implicit lock acquired by a Thread to execute synchronized method or synchronized block.
+	Lock implementaions provide more extensive operations than Traditional implicit locks.
+	
+	Important methods of Lock Interface:
+		1. void lock() - we can use this method to aquire a lock. 
+			If lock is available, then immediately current thread will get that lock ELSE the thread will wait untill getting the lock.
+			It is exactly same behavior of Traditional synchronized keyword.
+		2. boolean tryLock() -  To aquire the lock without waiting. 
+		   If the lock is available then the Thread aquires that lock and returns true.
+		   If the lock is not available then this method returns false and can continue its execuiton without waiting.
+		   In this case, thread never enters into waiting state.
+			if(tryLock()){
+				// do safe operation
+			} 
+			else{
+				// do alternative operation 
+			}
+		3. boolean tryLock(long time, TimeUnit unit) - try to aquire the lock. If lock is available aquire the lock, return true.
+			If lock is not available, wait for specified time to aquire the lock. If still not available return false and do alternative operations.
+			eg. tryLock(1, TimeUnit.HOUR);
+			enum TimeUnit { NanoSeconds, MicroSeconds, MilliSeconds, Seconds, Minutes, Hours, Days }
+		4. void lockInterruptibly(); - acquires the lock if it is available and returns immediately.
+			If lock is not available, then it will wait. While waiting, if the the thread is interruped then Thread wont get the lock.
+		5. void unlock(); - releases the lock.
+			if current thread is not the owner of the lock then an Exception is raised. Exception: IllegalMonitorStateException
+			
+ReenterantLock (implementaion class)
+	ReenterantLock is the implementaion class of Lock Interface.
+	It is direct child class of Object.
+	Reneterent means a thread can aquire multiple holds on the same lock. 
+	Internally reenterant lock increments Threads personal count whenever we call lock method and decrements count value whenever Thread call unlock method.
+	Lock will be released whenever hold count reaches zero.
+	
+	ReenterantLock l = new ReenterantLock();
+	ReenterantLock l = new ReenterantLock(boolean fairness); 
+					   // if fairness = true, then longest waiting thread will get the chance Doubt: among Threads of same priority?
+	Methods:
+		boolean isLocked();
+		boolean isFair();
+		Thread getOwner();
+		int getHoldCount();
+		boolean isHelodByCurrentThread();
+		boolean hasQueuedThreads();
+		int getQueueLenght();
+		Collection getQueuedThreads();
