@@ -14,3 +14,20 @@ Thread Group
 		Finalizer, Reference Handler, Signal Dispatcher, Attach Listener
 		
 	ThreadGroup is direct child class of Object class
+	
+	Methods:
+		String getName();
+		int getMaxPriority();
+		void setMaxPrority(int p); // has no effect on priority of existing threads
+		ThreadGroup getParent();
+		void list();
+		int activeCount();
+		int activeGroupCount();
+		int enumerate(Thread[] t); // to copy all active threads in ThreadGroup into provided thread array. Sub-thread group thread would also be considered.
+		int enumerate(ThreadGroup[] g); // to copy all active sub-Thread groups into the provided ThreadGroup array.
+		boolean isDemon();
+		void setDemon(boolean b);
+		void interrupt();
+		void destroy();
+
+	Q: WAP to print active threads in System group
