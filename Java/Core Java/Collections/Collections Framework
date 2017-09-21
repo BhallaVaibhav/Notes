@@ -1,0 +1,87 @@
+Collections Framework
+	contains several classes and Interfaces which can be used to represent a group of individual objects as a single entity.
+	
+9 key interfaces of Collection Framework
+	1. Collection
+	2. List
+	3. Queue
+	4. Set		5. SortedSet		6. NavigableSet
+	7. Map		8. SortedMap		9. NavigableMap
+	
+	
+Collection(I) v1.2
+	In general, it is considered as root interface of Collections Framework since it contains the most common methods which are applicable for any collection object.
+	There is no concrete class which implements Collection interface directly.
+	
+	Collection vs Collections
+		Collection is an Interface.
+		Collections is a utility class present in Java.util pacakage to define  several utility methods for Collection objects like sorting, searching etc
+		
+List(I) v1.2
+	- It is child interface of Collection(I)
+	- Insertion order needs to be maintained
+	- Duplicates allowed
+	
+	Implementation Classes:
+		ArrayList (v1.2)
+		LinkedList (v1.2)
+		Vector	(v1.0)	-	Legacy 	| but re-engineered in v1.2 to implement List(I)
+			Stack (v1.0) - Legacy	| but re-engineered in v1.2 to implement List(I)
+			
+Set(I) - v1.2
+	- duplicates not allowed
+	
+	Implementation classes:
+		HashSet(v1.2)
+			LinkedHashSet(v1.4)
+
+SortedSet(I)
+	- child interface of Set(I)
+	- Duplicates not allowed
+	- objects are inserted according to some 
+
+Queue(I) - v1.5
+	- follows FIFO - first in first out order
+	
+	Implementation Classes:
+		PriorityQueue
+		BlockingQueue
+			PriorityBlockingQueue
+			LinkedBlockingQueue
+
+All the above interfaces (Collection, List, Set, SortedSet, NavigableSet and Queue ) meant for representing a group of individual objects.
+If we want to represent a group of objects as key-value pairs then we should go for Map.
+
+Map(I) v1.2
+	HashMap v1.2
+		LinkedHashMap v1.2
+	WeakHashMap v1.2
+	IdentityHashMap v1.4
+	Hashtable( extends Dictionary(Abstract class) ) v1.0
+		Properties v1.0
+
+SortedMap(I) v1.2
+	- it is child interface of Map(I)
+	- if we want to represent a group of key-value pairs according to some sorting order of Keys
+
+NavigableMap(I) v1.6
+	- it is child interface of SortedMap(I)
+	- it defines several methods for navigation purposes
+	
+	Implementation class
+		TreeMap v1.2
+	
+	
+Sorting
+	Comparable(I) - default natural sorting
+	Comparator(I) - customized sorting
+	
+Cursor
+	Get object 1 by 1 from collection
+	- Enumeration v1.0 - Legacy
+	- Iterator
+	- ListIterator
+	
+Utility Classes
+	Collections
+	Arrays
