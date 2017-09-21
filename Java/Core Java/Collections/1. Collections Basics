@@ -1,0 +1,35 @@
+Arrays:
+	Fixed in Size
+	Homogeneous
+	No underlying data structure
+	
+	An array is an indexed collection of fixed number of homogenous data elements.
+	The main ADVANTAGE of arrays is that we can represent multiple values by using single variable which in turn improves the readability of the code.
+	
+	Limitation of Arrays
+		- Arrays are fixed in size ie once we create an array there is no chance of increasing or decreasing the size based on our requirement
+		  Due to this, to use arrays concept we must know the size requirement in advance, which may not always be possible
+		- Array can hold only homogenous data type elements
+		  eg. 	Student[] s = new Student[1000];
+				s[0] = new Student();
+				s[1] = new Customer();
+				CompileTime Exception: Incompatible data type - found: customer required: Student
+			We can mitigate this problem by declaring genric array 
+				Object[] a = new Object[1000];
+				a[0] = new Student();
+				a[1] = new Customer();
+	
+	Arrays concept is not implemented based on some standard data structure. Hence, ready-made method support is not available.
+	For every requirement we have to write the code explicitly which increases complexity of programming.
+	
+	To overcome the above problems of Arrays, we should go for Collections Concept.
+	
+Collections
+	Collections are growable in nature ie. based on our requirements we can increase or decrease the size.
+	Collections can hold both homogenous as well as hetrogeneous elements.
+	Every Collections class is implmented based on some standard data structure. Hence, for every requirement ready-made method support is available.
+	
+	Being a Programmer, we are responsible to use those methods and are not responsible to implement those methods.
+	
+	Note: Collections work only with objects but not with primitive data types.
+	Note: Collections are better memory-wise. Arrays are better performance wise.
