@@ -1,0 +1,138 @@
+Collection(I)
+	Collection Interface defines the most common methods which are applicable for any collection object.
+	There is no concreate implementation class for Collection(I)
+	Usually we can use collections to hold and transfer objects from one location to another location(container). 
+		To provide support for this requirement every Collection classby default implements Serializable, Clonable interface
+	
+	Only TreeSet and TreeMap, hetrogenous objects are NOT allowed since all objects should be added in some sorting order. since comparison is required, objects have to be of same type.
+	
+	Add Methods
+		boolean add(Object o);
+		boolean addAll(Collection c);
+	Remove Methods	
+		boolean remove(Object o);
+		boolean removeAll(Collection c);
+		void clear();	 					//remove all objects from collection
+		boolean retainAll(Collection c); 	// except the group of objects in c, removeAll
+	
+	Check
+		boolean contains(Object o);
+		boolean contains(Collection c);
+		boolean isEmpty();
+		int size();
+	
+	Retrieve
+		Object[] toArray()
+		Itreator iterator()
+		
+List(I)
+	- duplicates allowed
+	- insertion order preserved
+	- can hold hetrogenous objects
+	
+	void add(int index, Object o); //Add element at specified index. If there is already an Object at specified location then that moves to next place
+	boolean addAll(int index, Collection c);
+	
+	Object remove(Object o);
+	boolean remove(int index);
+	Object get(int index);
+	
+	set(int index, Object o); 	// replaces object at index 
+	indexOf(Object o); 			// returns index of first occurence of object object
+	lastIndexOf(Object o);
+	
+	ListIterator listIterator();
+	
+	Implementaion Classes	
+		ArrayList
+		LinkedList
+		Vector
+			Stack
+	
+	ArrayList
+		- underlying data structure - Resizable or Growable array
+		- insertion of null objects allowed
+		
+		Constructors:
+			ArrayList al = new ArrayList();
+				default initial capacity: 10  | new capacity = (current capacity * 3/2) + 1;
+			ArrayList al = new ArrayList(int initialCapacity);
+			ArrayList al = new ArrayList(Collection c);		//create an arrayList equivalent to passed collection(HashSet/Collection)
+		
+		ArrayList & Vector implements RandomAccess interface.
+			RandomAccess interface present in java.util package and it doesnt contains any methods. Its a marker interface.
+		Hence, these are the best choice of collections if our main operation is Retrieval.
+		
+		For insertion/deletion, all items of the arrayList need to be moved to make/fill space for the item.
+			If our frequent operation is insertion/deletion in the middle, then ArrayList is the worst choice.
+			
+	ArrayList vs Vector
+		ArrayList is Non-synchronized & Hence not thread safe	Vs Vector is Synchronized. Hence Thread Safe
+		ArrayList performance is relatively higher				Vs Vector performance is relatively lower
+		ArrayList came in version 1.2 & is non-Legacy			Vs Vector is legacy class
+		
+		ArrayList al = new ArrayList();
+		List l = Collections.synchronizedList(al); // converts non-synchronized arrayList to synchronized list
+		//public static List synchronizedList(List l);
+		
+		Similar operations:
+			public static Set Collections.synchronizedSet(Set s);
+			public static Map Collections.synchronizedMap(Map m);
+	
+	Vector
+		Vector v = new Vector();
+				default capacity:10 | new capacity = currentCapacity * 2
+		Vector v = new Vector(int initialCapacity);
+		Vector v = new Vector(int initialCapacity, int incrementalCapacity);
+		Vector v = new Vector(Collection c);
+		
+		addElement(Object o);
+		removeElement(Object o);
+		removeElementAt(int index);
+		removeAllElements();
+			
+	LinkedList
+		- underlying data structure - double link list
+		- insertion order is preserved
+		- duplicates allowed
+		- null insertion allowed
+		- Capacity not applicable for linked list
+		Best choice if frequent operaiton is addition/deletion in the middle.
+		Worst choice if frequent operation is retrival operation since the information that what lies in the next element is only known to the previous element. |and not in continous memory locations|
+		
+		Constructors:
+			LinkedList ll = new LinkedList();
+			LinkedList ll = new LinkedList(Collection c);
+			
+	QQ: WAP for Array based implementation of Stack && Queue
+			Stack: https://codereview.stackexchange.com/questions/64139/array-implementation-of-stack
+			Queue: https://codereview.stackexchange.com/questions/64258/array-implementation-of-queue
+	QQ: WAP for LinkedList based implementation of Stack && Queue
+			http://www.crazyforcode.com/implement-stack-queue-linked-list/
+	QQ: WAP for bubble sort
+	
+		void addFirst(Object o)
+		void addLast(Object o)
+		Object getFirst()
+		Object getLast()
+		Object removeFirst()
+		Object removeLast()
+	QQ: WAP for linear search && binary search
+	
+	Stack
+		push(Object o);
+		Object pop();	// returns top of stack after removal
+		Object peek(); 	// returns top of stack without removal
+		boolean empty();// check if stack is empty
+		int search(Object o);	//returns offset of object
+		
+		offset - position of element from the top of stack. -1 if element not present
+		
+	Enumeration
+		Enumeration e = v.elements(); // v is vector
+		while(e.hasMoreElements()){
+			(Integer)e.nextElement()
+		}
+		
+		public boolean hasMoreElements();
+		public object nextElement();
