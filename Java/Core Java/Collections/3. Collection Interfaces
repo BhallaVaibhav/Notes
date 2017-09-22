@@ -127,12 +127,3 @@ List(I)
 		int search(Object o);	//returns offset of object
 		
 		offset - position of element from the top of stack. -1 if element not present
-		
-	Enumeration
-		Enumeration e = v.elements(); // v is vector
-		while(e.hasMoreElements()){
-			(Integer)e.nextElement()
-		}
-		
-		public boolean hasMoreElements();
-		public object nextElement();
