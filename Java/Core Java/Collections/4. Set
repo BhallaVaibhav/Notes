@@ -1,0 +1,91 @@
+Set(I) v1.2
+	- HashSet(I)   v1.2	- LinkedHashSet(I) v1.4
+	- SortedSet(I) v1.2 - NavigableSet(I)  v1.6 - TreeSet(I) v1.2
+	
+	Set(I)
+		- child interface of Collection(I)
+		- If we want to represent a group of individual objects as a single entity where duplicates are NOT allowed and insertion order is NOT perserved.
+		Set interface doesnt contain any new method & we have to use only Collection(I) methods
+		
+	HashSet(C)
+		- underlying data structure : Hashtable
+		- based on Hashcode of objects
+		- null value allowed; but only 1
+		Hash based dataStructures are best suited for Search operation.
+		Default capacity: 16; 	Load Factor: 0.75
+		
+		Constructors
+			HashSet h = new HashSet();
+			HashSet h = new HashSet(int initialCapacity);
+			HashSet h = new HashSet(int initialCapacity, float fillRatio);
+			HashSet h = new HashSet(Collection c);
+			
+	LinkedHashSet(C) v1.4
+		- underlying data structure : LinkedList + Hashtable
+		- insertion order preserved
+			
+		Cache Memory
+			Primary Memory (RAM)
+				| CacheMemory
+			Secondary Memory (HD)
+			
+			CacheMemory stores repeated requested results.
+			In general, we can use LinkedHashSet to develop Cache based applications
+			1. Duplicates not allowed
+			2. Insertion order preserved
+
+			
+	SortedSet(I)
+		- Duplicates not allowed
+		- all elements inserted in some sorting order
+		
+		Methods
+			Object first()
+			Object last()
+			SortedSet headSet(106); 		//less than 106
+			SortedSet tailSet(106); 		// greater than equal to 106
+			SortedSet subSet(101,115); 	// greater than equal to 101 but less than 115
+			Comparator comparator();		// returns comparator object which describes internal sorting technique.
+								if we using natural sorting order then it returns null
+	
+	TreeSet(C)
+		- implementation class of SortedSet -> NavigableSet
+		- underlying data structure: Balanced TreeSet
+		- duplicates not allowed
+		- insertion order not preserved
+		- Hetrogeneous data structures not allowed as comarison is must. Else we get ClassCastException
+		- Homogeneous & Comparable data structure allowed
+		- Null insertion possible. But only 1
+		
+		TreeSet ts = new TreeSet();				// all objects inserted according to default sorting order
+		TreeSet ts = new TreeSet(Comparator c);	// customized sorting order specified by Comparator
+		TreeSet ts = new TreeSet(Collection c);	//default natural sorting order
+		TreeSet ts = new TreeSet(SortedSet s);
+		
+		NULL acceptance
+			- For empty TreeSet, if first element is NULL then no issues.
+				- When Second item is added ( Null or not-Null) then we get NullPointerException
+			- For non-empty treeSet, if we try to insert NULL then Exception:NullPointerException
+			
+			TreeSet ts = new TreeSet();
+			t.add(new StringBuffer("A"));
+			t.add(new StringBuffer("j"));
+			t.add(new StringBuffer("Z"));
+			t.add(new StringBuffer("B"));
+			syso(t);
+			
+			NullPointerException : Since, StringBuffer doesnt implement Comparable interface
+			
+	Comparable(I)
+		- underlying data structure: TreeSet (need to confirm)
+		- present in java.lang package
+		- contains only 1 method; public int compareTo(Object obj);
+		
+		obj1.compareTo(obj2);
+		- returns -ive if obj1 comes before obj2
+		- returns +ive if obj1 has to come after obj2
+		- returns 0 if obj1 & obj2 are equal
+		
+	Comparable meant for Default Natural Sorting order
+		Where As
+	Comparator meant for Customized Sorting order
