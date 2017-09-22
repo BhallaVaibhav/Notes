@@ -1,0 +1,48 @@
+Enumration(I)
+		Enumeration e = v.elements(); // v is vector
+		while(e.hasMoreElements()){
+			(Integer)e.nextElement()
+		}
+		
+		public boolean hasMoreElements();
+		public object nextElement();
+		
+	Limitation
+		1. Applicable only for legacy classes eg. possible for vecotor,stack and it is not universal cursor.
+		2. Remove capability not present.
+	
+Iterator(I)
+	1. Applicable for any collection object. Hence, it is Universal cursor.
+	2. It has capability to both read & remove operations.
+	
+	Itreator itr = anyCollection.iterator();
+	
+	Methods:
+		public boolean hasNext();
+		public Object next();
+		public void remove();
+		
+	Limitation of Itreator:
+		1. Itrator cursor is single direction cursor. It can move only in forward direction.
+		2. Read/Remove. Capability to ADD new object or Remove object not available.
+
+ListItreator(I) 
+	- child interface of Iterator(I)
+	- We can perform Read/Remove/Add/Replace operations
+	
+	We can get ListIterator by using listItrator method on List object.
+		ListIterator lI = l.listItrator();
+		
+	Methods
+		Forward movement
+			public boolean hasNext();
+			public Object next();
+			public int nextIndex();
+		Backward movement
+			public boolean hasPrevious();
+			public Object previous();
+			public int previousIndex();
+		Extra operations
+			public void remove();
+			public void add(Object o);
+			public void set(Object o);
