@@ -1,0 +1,52 @@
+Comparable(I)
+		- underlying data structure: TreeSet (need to confirm)
+		- present in java.lang package
+		- contains only 1 method; public int compareTo(Object obj);
+		- String and All wrapper classes implement Comparable interface
+		
+		obj1.compareTo(obj2);
+		- returns -ive if obj1 comes before obj2
+		- returns +ive if obj1 has to come after obj2
+		- returns 0 if obj1 & obj2 are equal
+		
+		Comparable meant for Default Natural Sorting order
+			Where As
+		Comparator meant for Customized Sorting order
+
+	Comparator 
+		- Comparator present in java.util package
+		- defines 2 methods
+		- Only implemented classes are Comparator && RuleBasedCollator (used in GUI classes)
+		
+			public int compare(Object obj1, Object obj2);
+				obj1.compare(obj2);
+				- returns -ive if obj1 comes before obj2
+				- returns +ive if obj1 has to come after obj2
+				- returns 0 if obj1 & obj2 are equal
+			public equals()
+				- not necessarily require to implement this method as it is already provided by Object class
+				
+				
+			
+			public int compare(Object obj1, Object obj2){
+				Integer I1 = (Integer) obj1;
+				Integer I2 = (Integer) obj2;
+				
+				1. return I1.compareTo(I2) 	-> Detault natural sorting order. Ascending order [ 0, 5, 10, 15, 20 ]
+				2. return -I1.compareTo(I2) -> Reverse of natural sorting order. Descening order [20, 15, 10, 5, 0]
+				3. return I2.compareTo(I1) 	-> Descening order [20, 15, 10, 5, 0]
+				4. return +1;				-> Insertion order [10, 0, 15, 5, 20]
+				5. return -1;				-> Return reverse of Insertion order
+				6. return 0;				-> Only first element will be returned; all remainaing are considered duplicates [10]
+			}
+		
+		Predefined Comparable classes -eg: String, Integer - follows defualt natural sorting
+			If we want sorting to be different from default sorting then we may define our own Comparator
+		
+		Predefined Non-Comparable classes - eg. String Buffer - no default natural sorting
+			Compulsory we need to define Comporator object
+			
+		Our own classes - eg. Employee, Customer - may or mayNot have sorting order
+			- Class owner is responsible to define default sorting order
+			- User may define customized sorting order by using Comporator 
+		
