@@ -1,0 +1,55 @@
+Map(I) v1.2
+		HashMap v1.2 -> LinkedHashMap v1.4
+		IdentityHashMap v1.4
+		WeakHashMap v1.2
+		SortedMap(I) v1.2 -> NavigableHashMap v1.6 -> TreeMap v1.2
+	Dictionary v1.0 - Hashtable v1.0 - Properties	v1.0
+		
+	
+	Map(I)
+		- A group of objects as key-value pair
+		- Each key-value pair is termed as Entry
+		- Not child interface of Collection(I)
+		
+		Methods:
+			Object put(Object key, Object value); eg. map.put("101", "Vaibhav");
+			void putAll(Map m);	// put all values in Map m
+			Object get(Object key);
+			Object remove(Object key);
+			boolean containsKey(Object key)
+			boolean containsValue(Object value)
+			boolean isEmpty();
+			int size(); // no of key-value pairs
+			void clear();
+			
+		Collection views of Map
+			Set keySet();
+			Collection values();
+			Set entrySet(); // returns set of Entry objects
+			
+		Entry(I) - Each key-value pair in a map is called an Entry
+			interface map(){
+				interface Entry{
+					Object getKey();					|
+					Object getValue();					| Map level objects
+					Object setValue(Object newObj);		|
+				}
+			}
+			
+	HashMap
+		- underlying data structure: Hashtable
+		- insertion order not preserved. It is based on hash code of keys.
+		- duplicate keys not allowed. But duplicate values allowed.
+		- Hetrogeneous keys & values allowed
+		- null allowed for keys. Only once Note: null key or value not allowed for Hashtable Exception: NullPointerException
+		Best choice if frequent operation is Search
+		
+		Constructors:
+			HashMap hMap = new HashMap(); // default initial capacity: 16 load factor: 0.75
+			HashMap hMap = new HashMap(int initialCapacity);  
+			HashMap hMap = new HashMap(int initialCapacity, float fillRatio);  
+			HashMap hMap = new HashMap(Map map);  
+		
+		Synchronization
+			HashMap hMap = new HashMap();	// hMap Non-Synchronized
+			Map m1 = Collections.synchronizedMap(hMap); // m1 is Synchronized
