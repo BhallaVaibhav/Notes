@@ -1,0 +1,98 @@
+	LinkedHashMap v1.4
+		- child class of HashMap
+		- underlying data structure : LinkedList + Hashtable
+		- Insertion order is preserved. It is based on Hash value
+	
+	What is the diff b/q == and equals method
+		== 			meant for reference comparison or address comparison
+		.equals() 	meant for content comparison
+		
+		HashMap hMap = new HashMap();
+		Integer i1 = new Integer(10);
+		Integer i2 = new Integer(10);
+		hMap.put(i1, "First");
+		hMap.put(i2, "Second");
+		syso(hMap); // ["Second"] - key are compared with .equals method which compares content
+		
+	IdentityHashMap
+		In case of IdentityHashMap, JVM uses == operator to identity duplicate keys, which is meant for reference(address) comparison.
+	
+	WeakHashMap
+		If key is an object, which is updated to value null after insertion to HashMap. Then the entry is removed from the map. then the map is termed as weakHashmap
+		
+		
+	SortedMap(I)
+		- child interace of Map
+		- if we want to represent a group of key-value pairs according to some sorting order 
+		- sorting is based on keys
+		
+		Methods: [101 =A, 103=B, 104=C, 107=D, 125=E, 136=F]
+		
+			Object firstKey(); 101 =A
+			Object lastKey();  136=F
+			SortedMap headMap(107); // 101 =A, 103=B, 104=C
+			SortedMap tailMap(107); //107=D, 125=E, 136=F
+			SortedMap subMap(103,125); // 103=B, 104=C, 107=D
+			Comparator comparator();
+			
+	TreeMap
+		- underlying data Structure : RED-BLACK Tree
+		- Insertion order not preserved
+		- sorted on basis of keys
+		- duplicates not allowed
+		- Hetrogeneous values not allowed
+		- null key value only allowed if it is the only element in TreeMap
+		
+		TreeMap tMap = new TreeMap();			// for default sorting
+		TreeMap tMap = new TreeMap(Comparator c);// for customized sorting
+		TreeMap tMap = new TreeMap(Map m);		
+		TreeMap tMap = new TreeMap(SortedMap sm);
+		
+		
+	Hashtable
+		- underlying data structure is Hashtable
+		- insertion order is not preserved. It is based on hashcode of keys
+		- duplicate keys not allowed. but duplicate values allowed
+		- hetorgeneous elements allowed for both key n value
+		- null values not allowed for keys or values
+		- implement serializable n clonable but not RandomAccess
+		- Thread Safe
+		- Best choice if our frequent operation is Search
+		
+		
+		Hashtable ht = new Hashtable(); // default size: 11 loadFactor: 0.75
+		Hashtable ht = new Hashtable(int initialCapacity);
+		Hashtable ht = new Hashtable(int initialCapacity, float fillRatio);
+		Hashtable ht = new Hashtable(Map m);
+		
+		
+		
+	Hashtable at Memory level
+		Default intital capacity: 11
+		Top to Bottom 1 | Right to Left
+			
+		In case of hashcode based data Structures, the data will be saved as per hashcode values
+		
+		QQ Anatomoy of Hashtable value storing logic
+			Hashtable stores value on basis of Hashcode. It gets the modulous value of the hashcode/initialCapacity and stores the value in the column.
+			
+	Properites
+		In our program, if anything which changes frequently(like username/password, mailId, mobileNumber etc) are not recommended to be hard coded in java program because if there is any change, to reflect that change we need to 1. recompile 2. rebuild 3. redeploy 4. Server Restart (Somethimes )application is required. This may take 2-3 hours and creates a big business impact to the client.
+		
+		we can overcome this problem by using Properties file, we have to configure the variables in the properties file. From that properties file we can read into values into java program and can thus use those properties.
+		The main advantage of this approach is that if there is a change in properties file then inorder to reflect that change we only need to redeploy the code which wont create any business impact to the client.
+		Java Properties object can be used to hold values from .properties file.
+		
+		Properties object is special case of Map which holds both key and value as String.
+		
+		Methods
+			String getProperty(String pname);
+			String setProperty(String pname, String pValue); // returns old value
+			Enumeration propertyNames(); // get all properties; iterate over enumeration and call getProperty to get the property value
+			
+		
+			Properites p = new Properites();
+			void load(InputStream is); 	// to load properties from properties file to java properties object
+			void store(OutputStream o, String comment);// to store properties from java properties object to properties file
+			
+			eg: JDBC conncetion properties can be saved in db.properties file
