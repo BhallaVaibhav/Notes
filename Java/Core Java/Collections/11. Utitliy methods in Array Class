@@ -1,0 +1,30 @@
+Utility methods for Array
+-------------------------
+
+	Sorting elements of Array
+	-------------------------
+		public static void sort(primitive[] p); // default natural sorting order
+		public static void sort(Object[] o); // default natural sorting order
+		public static void sort(Object[] o, Comparator c); 
+		
+	Searching elements in Array
+	--------------------------
+		Array class defines following binarySearch Methods
+		public static int binarySearch(primitive[], primitive target);
+		public static int binarySearch(Object[] a, Object target);
+		public static int binarySearch(Object[] a, Object target, Comparator c);
+	
+Conversion of Array to List
+	public static List asList(Object o);
+	
+	String [] s = ["A", "Z", "B"];
+	List l = Arrays.asList(s); // note: asList and Not toList method
+		// this method wont create a new list object.We are getting list view of the existing array
+		l.set(1,"M");	// Accepted
+	
+	Modifications to the size of underlying array not allowed.
+		l.add("M"); 	// unsupported operation exception
+		l.remove("A");	// unsupported operation exception
+		
+	Hetrogenous objects not allowed
+		l.set(1, new Integer(10)); // RE: ArrayStoreException as underlying array is type String[]
