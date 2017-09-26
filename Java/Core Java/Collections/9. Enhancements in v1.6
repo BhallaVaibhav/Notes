@@ -1,0 +1,29 @@
+v1.6 Enhancements in Collection Framework
+-----------------------------------------
+NavigableSet
+NavigableMap
+
+Collection - Set - SortedSet - NavigableSet - TreeSet
+	NavigableSet
+	- it is child interface of SortedSet
+	- it defines several methods for Navigation purposes
+	
+	Methods:
+		floor(e) 		// returns highest element <= e;
+		lower(e) 		// returns highest element < e;
+		ceiling(e)		// returns lowest element >= e
+		heigher(e)  	// returns lowest element > e
+		pollFirst()		// remove and return first element
+		pollLast() 		// remove and return last element
+		descendingSet 	// returns navigable set in reverse order
+		
+	NavigableMap
+	
+	Methods:
+		floorKey(e) 		// returns highest element <= e;
+		lowerKey(e) 		// returns highest element < e;
+		ceilingKey(e)		// returns lowest element >= e
+		heigherKey(e)  	// returns lowest element > e
+		pollFirstEntry()		// remove and return first element
+		pollLastEntry() 		// remove and return last element
+		descendingMap()	// returns navigable set in reverse order
