@@ -1,0 +1,22 @@
+Concurrent Collections
+---------------------
+
+Need of Concurrent Collections
+	1. Most of the Traditional Collections are not ThreadSafe
+	2. ThreadSafe Collections - Hashtable, Vector
+		Methods in Collections class
+		- synchronizedList();
+		- synchronizedSet();
+		- synchronizedMap();
+		Problemns in these synchronized methods:
+			- only one thread can work at a time. // total collection object is locked
+			- crates performance problems
+	3. Concurrent modifications problems
+		while one thread iterating collection, another thread modifies collection
+	
+	Due to the above, traditional Collections not suitable for multi-thread scalable applications
+	
+	What are various Concurrent collections
+		- ConcurrentHashMap
+		- CopyOnWriteArrayList
+		- CopyOnWriteArraySet
