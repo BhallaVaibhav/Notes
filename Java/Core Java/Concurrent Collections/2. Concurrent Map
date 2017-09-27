@@ -1,0 +1,42 @@
+ConcurrentMap(I)
+	- java.util.concurrent
+	
+	Methods
+		Object 	putIfAbset(Object key, Object value); 	// if key is NOT already available then the object is added
+		boolean remove(Object key, Object value);		// if both key and value match then remove
+		boolean replace(Object key, Object oldValue, Object newValue);	// if both key n value match, then replace oldValue with newValue
+	
+	
+	ConcurrentHashMap
+		- impmentation class of ConcurrentMap(I)
+		- underlying data structure : Hashtable
+		- thread safety with improved performance
+		- Allows concurrent read operation and thread safe update operations
+			- to perform read operation thread doesnt require any lock
+			- to perform update operation, thread requires segment lock instead of total object lock
+		- bucket level lock (Segment locking) available instead of total object level lock
+		- concurrent update achieved by internally dividing map into smaller portions, which is defined by Concurrency Level
+			- default concurrency level is 16
+		- null is not allowed for both key and value
+		- concurrent collection never throw ConcurrentModificationException
+		Segment locking
+			total hashMap divided into specified no of parts(16 by default)
+			Here 16 is the concurrency method
+			
+			Consider the following:
+				initialCapacity: 16 
+					Concurrency Level: 16 // locks per bucket -1
+					Concurrency Level: 8  // 1 lock per 2 buckets
+					Concurrency Level: 32 // 2 locks per bucket
+					
+		Construtors
+			ConcurrentHashMap cHm = new ConcurrentHashMap(); // 16, 0.75, 16
+			ConcurrentHashMap cHm = new ConcurrentHashMap(int initialCapacity);
+			ConcurrentHashMap cHm = new ConcurrentHashMap(int initialCapacity, float fillRatio);
+			ConcurrentHashMap cHm = new ConcurrentHashMap(int initialCapacity, float fillRatio, int concurrencyLevel);
+			ConcurrentHashMap cHm = new ConcurrentHashMap(Map m);
+			
+	Are the updates from ConcurrentHashMap available to iterator?
+		There is no Gauranettee.. it may or may not be available in iterator
+		Note: As iterator is forward only operator.
+		if before crossing the cell, then it is available. If element added after crossing the cell, then it is not available.
