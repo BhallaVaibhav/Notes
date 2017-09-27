@@ -5,14 +5,18 @@ Java 8 Lambda Expressions
 What are Lambdas?
 -----------------
 	Lambdas lets you create entities which are just functions/actions called lambda expression. 
-	These lambda expressions do not belong to a class or are methods of a class. These are just functions/actions which exist in isolation.
+	These lambda expressions do not belong to a class or are methods of a class. 
+	These are just functions/actions which exist in isolation.
 	These functions/expressions can be treated as values.
 
 	Functions as values
-		Inline values: String name = "foo"; double pi = 3.14; 
-			So data act as values; Similarly Objects act as values in Java
+	-------------------
+		In conventional Java, we assign Inline values as: 
+			String name = "foo"; 
+			double pi = 3.14; 
+		Here data act as values; Likewise, Objects act as values in Java
 
-		If a piece of code can be assigned to a variable
+		Consider, if a piece of code can be assigned to a variable
 			aBlockOfCode = {
 				....
 				....
@@ -20,38 +24,39 @@ What are Lambdas?
 		Here, method(block of code) becomes a thing that get assigned to a variable
 		So, a typical lambda expression looks like:
 		aBlockOfCode = (yourParams) -> {
-							console.log("you can use " + yourParams + " here.");
-						}
+					console.log("you can use " + yourParams + " here.");
+				}
 
 Why Lambdas? 
 What are the Advantages for Lambdas ?
 -------------------------------------
-	- Enables Functional programming -> Biggest advantage
+	- Enables Functional programming -> BIGGEST Advantage
 	- Get readable and concise code; eliminates boilerplate code
 	- Enables us to build better and easier-to-use APIs and libraries
 	- Enables support for parellel processing
 
 Functional Programming Vs Object Oriented programming
 -----------------------------------------------------
-	Why do we need Functional programming while we have been using Object Oriented programming for long?
+	QQ: Why do we need Functional programming while we have been using Object Oriented programming for long ??
 		We are not replacing OO programming from Java. Java still inheriently remains an OO language.
 		Functional Programming is just another tool in the toolbox for when the right kind of situation arises.
 
-	Some of the problems in OO programming
-		Almost everything is an object. So, there isnt a piece of logic/ functionality/ code that exists in isolation. Everything is a part of a Class/ an object. It has to be associated with it. -> This mostly is not a problems.
-
+	Some of the problems in OO programming :
+		Almost everything is an object. 
+		So, there isn't a piece of logic/ functionality/ code that exists in isolation. 
+		Everything is a part of a Class or an object. It has to be associated with it. -> This mostly is NOT a problem.
 
 Examples of Lambda Experssion
 -----------------------------
 	greetingFunction = () -> System.out.println("Hello World");
-
+	
 	doubleNumberFunction = (int a) -> a * 2;
-
+	
 	addFunction = (int a, int b) -> a + b;
-
+	
 	safeDivisionFunction =(int a, int b) -> {
 		if(b==0) return 0;
 		return a/b;
 	}
-
+	
 	stringLenghtCountFunction = (String s) -> s.length();
