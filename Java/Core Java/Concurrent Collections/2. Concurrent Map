@@ -35,8 +35,14 @@ ConcurrentMap(I)
 			ConcurrentHashMap cHm = new ConcurrentHashMap(int initialCapacity, float fillRatio);
 			ConcurrentHashMap cHm = new ConcurrentHashMap(int initialCapacity, float fillRatio, int concurrencyLevel);
 			ConcurrentHashMap cHm = new ConcurrentHashMap(Map m);
-			
+	
 	Are the updates from ConcurrentHashMap available to iterator?
 		There is no Gauranettee.. it may or may not be available in iterator
 		Note: As iterator is forward only operator.
 		if before crossing the cell, then it is available. If element added after crossing the cell, then it is not available.
+			
+	Fail-Fast Vs Fail Safe Iterator
+		HashMap iterator is considered as fail fast as any concurrent modification on Collection/Map being iterated immediately throws an ConcorrectModificationException.
+		ConcurrentHashMap iterator is considered as fail safe as No ConcorrectModificationException is thrown even if multiple threads operate(CRUD) over the collection being iterated.
+		
+	What is the diff b/q Hashtable && SynchronizedMap && ConcurrentHashMap ??
