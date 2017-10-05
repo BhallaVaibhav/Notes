@@ -1,0 +1,71 @@
+Spring MVC Intro
+----------------
+MVC framework
+	- need to support upto model part
+	- will provide support from presentation part to Controller part
+
+MVC uses WebApplicationContext IOC container
+
+Spring MVC provides support for :
+	1. Form backup support - useful for Presentation part 
+		- We can hold form data in bean form and we can do form validations
+		- eg Id, name, email, mobile 
+			-> Submit this data to service for validation
+				-> populate previous data in case of error
+		- use spring tag library to create Presentation part
+	2. Controllers (Multi-Action Controllers & Multi-Form Controllers)
+		eg- Student Registeration, Update and Find
+	3. Validation Support
+	4. Internationalization Support (I18N)
+	5. Interceptors
+	6. View Resolvers
+	7. Exception Handling Support
+
+Recommended architechtural models for designing Spring MVC Framework
+	- JSP model architecture
+
+As per JSP model architecture
+	- Multiple view requests are handled by single controller
+	Depending upon what Front Controller are we using there are 4 Types of JSP Models
+		- JSP 		( JSP - Model 1 ) - Not secure since it uses JSP which is open to manipulations
+		- Servlet 	( JSP - Model 2 ) - Recommended - Data is provided in the form of .class files -> Apache designed Struts 1.x | Spring Architecture Framework | JSF
+		- Filters 	( JSP - Model 3 ) - Recommended - Data is provided in the form of .class files -> Apache designed Struts 2.x
+		- Tag Support ( JSP Model 4 ) - Not secure since it uses JSP which is open to manipulations
+
+
+Spring MVC is designed using JSP Model 2. Hence Front Controller has to use Servlets.
+
+
+Spring Front Controller
+-----------------------
+
+For Spring MVC the name of Front controller is Dispatcher servlet
+For Struts 1x, it is ActionServlet
+For JSF, it is FacetServlet
+
+For Struts 2.x -> 2 classes: FilterDesigner and StrutsPrepareAndExecuteFilter
+
+As per Front Controller Design pattern, multiple inputs we can map to one single (Front) controller
+
+
+Registeration page	-> Action is registeration 	-> 
+getData				-> Action is get Data		->	map in web.xml -> Dispatcher Servlet
+Login Page			-> Action is to Login		->
+
+3 Types of url pattern Tomcat supports:
+	1. complete character segment
+	2. /*
+	3. *.ext
+
+
+Configure Controllers
+	Programatic
+	1. Controller
+	2. AbstractController
+	3. Abstract Command Controller
+	4. Simple Form Controller
+	5. AbstractWizardFrontController
+	6. MultiActionController
+
+	StereoType
+		@Controller
