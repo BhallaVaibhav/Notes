@@ -66,5 +66,8 @@ Programatic
 5. AbstractWizardFrontController
 6. MultiActionController
 
-StereoType
-	@Controller
+StereoTypes
+ @Component
+ @Controller
+ @Repository
+	
