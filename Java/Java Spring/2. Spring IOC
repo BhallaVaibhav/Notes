@@ -6,16 +6,13 @@ Containers
  - J2EE :  ApplicationContext(I) & ConfigurableApplicationContext(I)
  
 Basic Purpose of Containers:
-	- Containers will create instances for POJO classes
-	- manage life-cycle for POJO classes
-	- do dependancy injection to POJO classes
+- Containers will create instances for POJO classes
+- manage life-cycle for POJO classes
+- do dependancy injection to POJO classes
 	
 Diff b/w Core container & J2EE container
 	
 	
 Characterstics of spring.xml file
-		- must configure dtd or xsd : purpose is to validate spring.xml file using sax parser( will check for wellform-ness and validness)
-		- always start with <beans > tag
-		
-		
-		
+- must configure dtd or xsd : purpose is to validate spring.xml file using sax parser( will check for wellform-ness and validness)
+- always start with <beans > tag
